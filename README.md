@@ -1,2 +1,3 @@
-# delivery-service-website
-Tracks parcels and bulk parcel information for businesses
+# Delivery Service Website
+
+Tracks parcels and bulk parcel information for businesses.
