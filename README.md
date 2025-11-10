@@ -1,3 +1,22 @@
 # Delivery Service Website
 
 Tracks parcels and bulk parcel information for businesses.
+
+## Development Setup
+
+To set up development it is reccomended to build a virtual environment with [venv](https://docs.python.org/3/library/venv.html). 
+
+i# Delivery Service Website
+
+Tracks parcels and bulk parcel information for businesses.
+
+## Development Setup
+
+To set up development it is reccomended to build a virtual environment with [venv](https://docs.python.org/3/library/venv.html). Source to the virtual enviroment, then run `pip install -r requirements.txt` on project root.
+
+### Requirements
+
+- Python 3.14
+- Django 5.2.8
+
+
