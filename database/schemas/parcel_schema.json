@@ -1,0 +1,30 @@
+{
+  "parcels": {
+    "_id": "parcel_uuid",
+    "tracking_number": "string",
+    "sender": {
+      "name": "string",
+      "address": "object"
+    },
+    "recipient": {
+      "name": "string", 
+      "address": "object"
+    },
+    "current_status": "pending|in_transit|delivered|failed",
+    "current_location": {
+      "lat": "number",
+      "lng": "number",
+      "address": "string"
+    },
+    "created_at": "timestamp",
+    "estimated_delivery": "timestamp",
+    "status_history": [
+      {
+        "status": "string",
+        "location": "object",
+        "timestamp": "timestamp",
+        "notes": "string"
+      }
+    ]
+  }
+}

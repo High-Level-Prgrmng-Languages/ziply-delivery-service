@@ -1,0 +1,21 @@
+{
+  "pages": {
+    "_id": "page_uuid",
+    "url": "string",
+    "title": "string",
+    "content": "text",
+    "owner_id": "string",
+    "created_at": "timestamp",
+    "updated_at": "timestamp",
+    "status": "active|inactive|archived",
+    "metadata": {
+      "tags": ["string"],
+      "category": "string",
+      "priority": "number"
+    },
+    "analytics": {
+      "views": "number",
+      "last_accessed": "timestamp"
+    }
+  }
+}
