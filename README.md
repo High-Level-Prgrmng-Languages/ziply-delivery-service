@@ -28,35 +28,29 @@ A Django-based REST API for parcel tracking using MongoDB as the database backen
 
 ### Installation
 
-1. **Clone the repository**
-```bash
-git clone <your-repo-url>
-cd myproject
-```
-
-2. **Create virtual environment**
+1. **Create virtual environment**
 ```bash
 python -m venv myproject-env
 source myproject-env/bin/activate  # On Windows: myproject-env\Scripts\activate
 ```
 
-3. **Install dependencies**
+2. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Environment setup**
+3. **Environment setup**
 ```bash
 cp .env.example .env
 # Edit .env with your MongoDB connection details
 ```
 
-5. **Initialize database**
+4. **Initialize database**
 ```bash
 python manage.py init_database
 ```
 
-6. **Run the server**
+5. **Run the server**
 ```bash
 python manage.py runserver
 ```
