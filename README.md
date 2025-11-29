@@ -16,42 +16,51 @@ A Django-based REST API for parcel tracking using MongoDB as the database backen
 - **Backend**: Django 4.x with Django REST Framework
 - **Database**: MongoDB with Djongo ORM bridge
 - **API**: RESTful JSON API
-- **Environment**: Python 3.10+
+- **Environment**: Python 3.14+
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.10 or higher
+- Python 3.14 or higher
 - MongoDB instance (local or cloud)
 - Git
 
 ### Installation
 
-1. **Create virtual environment**
+1. **Clone the repository**
 ```bash
-python -m venv myproject-env
+git clone https://github.com/High-Level-Prgrmng-Languages/ziply-delivery-service
+cd delivery-service-website
+```
+
+2. **Create virtual environment**
+```bash
+python3.14 -m venv myproject-env
+# Alternative: python -m venv myproject-env
 source myproject-env/bin/activate  # On Windows: myproject-env\Scripts\activate
 ```
 
-2. **Install dependencies**
+3. **Install dependencies**
 ```bash
-pip install -r requirements.txt
+pip install -r src/requirements.txt
 ```
 
-3. **Environment setup**
+4. **Environment setup**
 ```bash
-cp .env.example .env
-# Edit .env with your MongoDB connection details
+cp src/.env.example src/.env
+# Edit src/.env with your MongoDB connection details
 ```
 
-4. **Initialize database**
+5. **Initialize database**
 ```bash
+cd src/ziply_delivery
 python manage.py init_database
 ```
 
-5. **Run the server**
+6. **Run the server**
 ```bash
+cd src/ziply_delivery
 python manage.py runserver
 ```
 
