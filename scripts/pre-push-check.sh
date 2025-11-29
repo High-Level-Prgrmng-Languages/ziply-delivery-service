@@ -35,6 +35,6 @@ fi
 echo "✅ All checks passed! Repository is ready for GitHub."
 echo ""
 echo "Next steps:"
-echo "1. git add ."
+echo "1. git add . --exclude=scripts/"
 echo "2. git commit -m 'Initial commit: Django MongoDB parcel tracking API'"
 echo "3. git push origin main"
