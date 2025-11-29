@@ -1,0 +1,99 @@
+/**
+* Description: Main Stylesheet for the website that handles global styles
+* Author: Carson Fujita
+* Date: November 29th, 2025
+* License: GPL-3.0-or-later
+*/
+
+/* --- Global Colors -- */
+:root {
+	/* -- Background Colors -- */
+	--background-primary: #1A1B26;
+	--background-dark: #16161E;
+	--background-extra-Dark: #0C0E14;
+	--background-light: #292E42;
+
+	/* -- Blue Colors -- */
+	--blues-blue: #7AA2F7;
+	--blues-dark: #394B70;
+
+	/* -- Foreground Colors -- */
+	--foreground-light: #C0CAF5;
+	--foreground-light2: #A9B1D6;
+	--foreground-dark: #3B4361;
+
+	/* -- Gradients -- */
+	--center-gradient: linear-gradient(271deg, #0C0E14 0.79%, #1A1B26 48.63%, #0C0E14 99.21%);
+	--gradient-one: linear-gradient(91deg, #292E42 46.33%, #0C0E14 83.19%);
+	--metalic-shine: linear-gradient(272deg, #3B4261 -0.22%, #A9B1D6 48.49%, #3B4261 100%);
+}
+
+/* --- Global Styles -- */
+body {
+	margin: 0 !important;
+	padding: 0 !important;
+
+	/* -- Styles -- */
+	font-family: "Inter", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+.flex {
+	display: flex;
+}
+
+/* --- Fonts --- */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Inter", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+}
+
+h1 {
+	font-size: 41px;
+	/* bold */
+	font-weight: 700;
+}
+
+h2,
+h3,
+h4 {
+	/* semi bold */
+	font-weight: 600;
+}
+
+h2 {
+	font-size: 39px;
+}
+
+h3 {
+	font-size: 29px;
+}
+
+h4 {
+	font-size: 27px;
+}
+
+h5 {
+	font-size: 24px;
+}
+
+h6 {
+	font-size: 22px;
+}
+
+p {
+	font-size: 20px;
+}
+
+.text-light {
+	color: var(--foreground-light);
+}
