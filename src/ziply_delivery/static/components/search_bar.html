@@ -1,0 +1,50 @@
+<style>
+/* Search Bar Component Styles */
+.search-container {
+	position: relative;
+	width: 100%;
+	max-width: 300px; 
+}
+
+.search-input {
+	width: 100%;
+	padding: 0.5rem 2.5rem 0.5rem 1rem;
+	background-color: var(--background-dark);
+	border: 1px solid var(--blues-dark);
+	border-radius: 9999px; 
+	color: var(--foreground-light);
+	font-size: 0.9rem;
+	transition: border-color 0.2s;
+}
+
+.search-input::placeholder {
+	color: var(--foreground-dark);
+}
+
+.search-input:focus {
+	border-color: var(--blues-blue);
+	outline: none;
+}
+
+.search-btn {
+	position: absolute;
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: var(--foreground-light2);
+	cursor: pointer;
+	padding: 0.25rem;
+}
+
+.search-btn:hover {
+	color: var(--foreground-light);
+}
+</style>
+
+<div class="search-container">
+	<input type="text" placeholder="Search" class="search-input" />
+	<button class="search-btn">
+	</button>
+</div>

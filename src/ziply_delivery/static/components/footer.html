@@ -1,0 +1,92 @@
+<style>
+/* Footer Component Styles */
+.footer {
+	background-color: var(--background-extra-Dark);
+	color: var(--foreground-light2);
+	padding: 3rem 0;
+	border-top: 1px solid var(--background-dark);
+	margin-top: auto; /* just pushes footer to the bottom */
+}
+
+.footer-link {
+	color: var(--foreground-light2);
+	text-decoration: none;
+	font-size: 0.9rem;
+	transition: color 0.2s;
+	display: block; 
+}
+
+.footer-link:hover {
+	color: var(--foreground-light);
+}
+
+.footer h5 {
+	color: var(--foreground-light);
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+	font-size: 1rem;
+}
+
+.footer-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+	margin-bottom: 2rem;
+}
+
+@media (min-width: 769px) {
+	.footer-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.footer-bottom {
+	border-top: 1px solid var(--background-dark);
+	padding-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.85rem;
+	text-align: center;
+}
+
+@media (min-width: 769px) {
+	.footer-bottom {
+		flex-direction: row;
+		text-align: left;
+	}
+}
+</style>
+<footer class="footer">
+	<div class="container">
+		<div class="footer-grid">
+			<!-- Company column -->
+			<div>
+				<h5>Company</h5>
+				<a href="#" class="footer-link">Our Story</a>
+				<a href="#" class="footer-link">About Us</a>
+			</div>
+			<!-- Account column -->
+			<div>
+				<h5>Account</h5>
+				<a href="/register" class="footer-link">Create Account</a>
+				<a href="/login" class="footer-link">Login</a>
+			</div>
+			<!-- Services Column -->
+			<div>
+				<h5>Services</h5>
+				<a href="#" class="footer-link">Tracking</a>
+				<a href="#" class="footer-link">Shipping</a>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<p>&copy; 2025 Ziply Delivery. All rights reserved.</p>
+			<div style="display: flex; gap: 1.5rem; margin-top: 1rem;">
+				<a href="#" class="footer-link">Privacy Policy</a>
+				<a href="#" class="footer-link">Terms of Service</a>
+			</div>
+		</div>
+	</div>
+</footer>
