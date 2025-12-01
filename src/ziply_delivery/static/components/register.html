@@ -1,107 +1,45 @@
-<style>
-/* Register Component Styles (shares most styles with login so most is just copied over) */
-.auth-card {
-	background-color: var(--background-primary);
-	border: 1px solid var(--background-dark);
-	border-radius: 1rem;
-	padding: 2.5rem;
-	width: 100%;
-	max-width: 500px;
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-}
+<div class="auth-card" role="form" aria-labelledby="register-title">
 
-.auth-card h2 {
-	font-size: 1.5rem;
-	font-weight: 700;
-	text-align: center;
-	margin-bottom: 0.5rem;
-}
+    <h2 id="register-title">Create Your Ziply Account</h2>
+    <p class="subtitle">Complete the form to start shipping with us</p>
 
-.auth-card p.subtitle {
-	color: var(--foreground-light2);
-	text-align: center;
-	margin-bottom: 2rem;
-	font-size: 0.9rem;
-}
+    <form method="post" aria-label="Registration form">
 
-.form-group {
-	margin-bottom: 1rem;
-}
+        <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" name="email" aria-required="true" required>
+        </div>
 
-.form-label {
-	display: block;
-	color: var(--foreground-light2);
-	font-size: 0.75rem;
-	font-weight: 600;
-	margin-bottom: 0.5rem;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-}
+        <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+                <label for="reg-first-name">First Name</label>
+                <input type="text" id="reg-first-name" name="first_name" aria-required="true" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="reg-last-name">Last Name</label>
+                <input type="text" id="reg-last-name" name="last_name" aria-required="true" required>
+            </div>
+        </div>
 
-.switch-link {
-	color: var(--foreground-light2);
-	text-decoration: none;
-	transition: color 0.2s;
-	background: none;
-	border: none;
-	cursor: pointer;
-	font-size: 0.9rem;
-}
+        <div class="form-group">
+            <label for="reg-phone">Telephone Number</label>
+            <input type="tel" id="reg-phone" name="phone" aria-required="true" required>
+        </div>
 
-.switch-link:hover {
-	color: var(--blues-blue);
-}
+        <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" name="password" aria-required="true" required>
+        </div>
 
-.form-row {
-	display: flex;
-	gap: 1rem;
-}
-</style>
+        <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password</label>
+            <input type="password" id="reg-confirm-password" name="confirm_password" aria-required="true" required>
+        </div>
 
-<div class="auth-card">
-	<h2>Create Your Ziply Account</h2>
-	<p class="subtitle">Complete the form to start shipping with us</p>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </form>
 
-	<form onsubmit="event.preventDefault(); alert('Registration submitted!');">
-		<div class="form-group">
-			<label for="reg-email" class="form-label">Email Address</label>
-			<input type="email" id="reg-email" class="input-field" required>
-		</div>
-		
-		<div class="form-row">
-			<div class="form-group" style="flex: 1;">
-				<label for="reg-first-name" class="form-label">First Name</label>
-				<input type="text" id="reg-first-name" class="input-field" required>
-			</div>
-			<div class="form-group" style="flex: 1;">
-				<label for="reg-last-name" class="form-label">Last Name</label>
-				<input type="text" id="reg-last-name" class="input-field" required>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="reg-phone" class="form-label">Telephone Number</label>
-			<input type="tel" id="reg-phone" class="input-field" required>
-		</div>
-
-		<div class="form-group">
-			<label for="reg-password" class="form-label">Password</label>
-			<input type="password" id="reg-password" class="input-field" required>
-		</div>
-
-		<div class="form-group">
-			<label for="reg-confirm-password" class="form-label">Confirm Password</label>
-			<input type="password" id="reg-confirm-password" class="input-field" required>
-		</div>
-
-		<button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
-			Create Account
-		</button>
-	</form>
-
-	<div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">
-		<button onclick="window.location.href='/login'" class="switch-link">
-			Already have an account? Log in
-		</button>
-	</div>
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">
+        <a href="{% url 'login' %}" class="switch-link">Already have an account? Log in</a>
+    </div>
 </div>

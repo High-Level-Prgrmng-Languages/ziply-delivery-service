@@ -1,61 +1,14 @@
-<style>
-/* Search Bar Component Styles */
-.search-container {
-	position: relative;
-	width: 100%;
-	max-width: 300px;
-}
-
-.search-input {
-	width: 100%;
-	padding: 0.5rem 2.5rem 0.5rem 1rem;
-	background-color: var(--background-dark);
-	border: 1px solid var(--blues-dark);
-	border-radius: 9999px;
-	color: var(--foreground-light);
-	font-size: 0.9rem;
-	transition: border-color 0.2s;
-}
-
-.search-input::placeholder {
-	color: var(--foreground-dark);
-}
-
-.search-input:focus {
-	border-color: var(--blues-blue);
-	outline: none;
-}
-
-.search-btn {
-	position: absolute;
-	right: 0.5rem;
-	top: 50%;
-	transform: translateY(-50%);
-	background: none;
-	border: none;
-	color: var(--foreground-light2);
-	cursor: pointer;
-	padding: 0.25rem;
-}
-
-.search-btn:hover {
-	color: var(--foreground-light);
-}
-</style>
-
-<!-- accessible search component -->
-<div class="search-container" role="search">
-
-	<input 
-		type="text" 
-		class="search-input" 
-		placeholder="Search" 
-		aria-label="Search input field"
-	/>
-
-	<button 
-		class="search-btn" 
-		aria-label="Search button">
-	</button>
-
+<div class="search-container" role="search" aria-label="Site search">
+    <form method="get" action="/search">
+        <label for="search-input" class="visually-hidden">Search</label>
+        <input 
+            type="text" 
+            id="search-input" 
+            name="q"
+            class="search-input"
+            placeholder="Search"
+            aria-required="true"
+        >
+        <button type="submit" class="search-btn" aria-label="Submit search"></button>
+    </form>
 </div>
