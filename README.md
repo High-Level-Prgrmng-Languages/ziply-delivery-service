@@ -48,8 +48,8 @@ pip install -r src/requirements.txt
 
 4. **Environment setup**
 ```bash
-cp src/.env.example src/.env
-# Edit src/.env with your MongoDB connection details
+cp src/ziply_delivery/.env.example src/ziply_delivery/.env
+# Edit src/ziply_delivery/.env with your MongoDB connection details
 ```
 
 5. **Initialize database**
