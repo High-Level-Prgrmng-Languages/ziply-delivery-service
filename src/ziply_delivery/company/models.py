@@ -4,6 +4,7 @@ from django.db import models
 
 from django.db import models
 
+
 class Company(models.Model):
     name = models.CharField(max_length=200)
     address = models.TextField()
@@ -13,7 +14,8 @@ class Company(models.Model):
     account = models.CharField(max_length=50, unique=True)
 
     # Optional improvements
-    created_at = models.DateTimeField(auto_now_add=True)  # set once when created
+    created_at = models.DateTimeField(
+        auto_now_add=True)  # set once when created
     updated_at = models.DateTimeField(auto_now=True)      # updates every save
 
     def __str__(self):

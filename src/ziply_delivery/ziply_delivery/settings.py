@@ -11,26 +11,26 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 # ENV
+from pathlib import Path
 import os
 import environ
-
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Build env
+# Initialize environment variables
 ENV = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, ''),
+    MONGODB_URI=(str, 'mongodb://localhost:27017'),
+    MONGODB_DB_NAME=(str, 'delivery_service'),
 )
 
 # Read .ENV file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = ENV('SECRET_KEY')
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENV('DEBUG')
-
 ALLOWED_HOSTS = []
 
 
@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'parcels',
+    'pages',
     'client',
     'company',
-    'api',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +87,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'nosql': {
+        'ENGINE': 'djongo',
+        'NAME': ENV('MONGODB_DB_NAME'),
+        'CLIENT': {
+            'host': ENV('MONGODB_URI')
+        }
     }
 }
 
