@@ -1,0 +1,38 @@
+<header class="header">
+	<div class="container flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center; height: 4rem;">
+		<!-- Logo -->
+		<div class="flex items-center">
+			<!-- Logo Icon (Placeholder) -->
+			<div style="background-color: var(--blues-blue); width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 0.5rem;">
+				<span style="color: var(--background-extra-Dark); font-weight: 700;">Z</span>
+			</div>
+			<span class="logo-text">ZIPLY</span>
+		</div>
+
+		<!-- Desktop Navigation -->
+		<nav class="header-desktop-nav" style="display: flex; gap: 2rem;">
+			<a href="/" class="nav-link">Home</a>
+			<a href="/login" class="nav-link">Login</a>
+			<a href="/support" class="nav-link">Support</a>
+		</nav>
+		
+		<!-- Search Bar Container -->
+		<div class="header-desktop-nav">
+			<div id="header-search-container"></div>
+		</div>
+
+		<!-- Mobile Menu Button -->
+		<div class="header-mobile-toggle">
+			<button class="mobile-menu-btn" onclick="toggleMobileMenu(this)">
+			</button>
+		</div>
+	</div>
+
+	<!-- Mobile Navigation (Hidden) -->
+	<div id="mobile-menu" class="mobile-menu">
+		<a href="/" class="nav-link">Home</a>
+		<a href="/login" class="nav-link">Login</a>
+		<a href="/support" class="nav-link">Support</a>
+		<div style="padding-top: 1rem;" id="mobile-search-container"></div>
+	</div>
+</header>

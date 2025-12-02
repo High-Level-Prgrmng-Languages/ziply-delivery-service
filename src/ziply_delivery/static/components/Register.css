@@ -1,0 +1,164 @@
+/* color variables with fallbacks */
+:root {
+  --background-primary: #ffffff;
+  --background-dark: #e6e6e6;
+  --foreground: #111827;
+  --foreground-light: #6b7280;
+  --foreground-light2: #9ca3af;
+  --blues-blue: #2563eb;
+  --btn-bg: var(--blues-blue);
+  --btn-text: #ffffff;
+  --input-border: #d1d5db;
+  --focus-ring: 3px;
+}
+
+/* card container */
+.auth-card {
+  background: var(--background-primary);
+  border: 1px solid var(--background-dark);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  margin: 1rem auto;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+  color: var(--foreground);
+  box-sizing: border-box;
+}
+
+/* headings and subtitle */
+.auth-card h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 0 0 0.4rem 0;
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--foreground-light2);
+  font-size: 0.9rem;
+  margin: 0 0 1.25rem 0;
+}
+
+/* form spacing */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* labels */
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--foreground-light2);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* inputs */
+.input-field {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--foreground);
+  transition: border 120ms ease, box-shadow 120ms ease;
+}
+
+/* focus for accessibility - keyboard users see a clear ring */
+.input-field:focus,
+.input-field:focus-visible {
+  outline: none;
+  border-color: var(--blues-blue);
+  box-shadow: 0 0 0 var(--focus-ring) rgba(37,99,235,0.12);
+}
+
+/* disabled inputs */
+.input-field:disabled {
+  background: #fafafa;
+  color: var(--foreground-light2);
+  cursor: not-allowed;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  width: 100%;
+  border-color: transparent;
+}
+
+/* primary hover / active */
+.btn-primary:hover {
+  filter: brightness(0.97);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* button focus visible for keyboard */
+.btn:focus,
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--focus-ring) rgba(37,99,235,0.18);
+}
+
+/* small link like button */
+.switch-link {
+  background: none;
+  border: none;
+  color: var(--foreground-light2);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.switch-link:hover,
+.switch-link:focus {
+  color: var(--blues-blue);
+  text-decoration: underline;
+}
+
+/* helper: visually hidden for screen readers */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* responsive tweaks */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.25rem;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.center {
+  text-align: center;
+}
