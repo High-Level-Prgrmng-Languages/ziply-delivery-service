@@ -16,19 +16,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Parcel',
             fields=[
-                ('_id', models.CharField(default=parcels.models.generate_uuid, max_length=36, primary_key=True, serialize=False)),
+                ('_id', models.CharField(default=parcels.models.generate_uuid,
+                 max_length=36, primary_key=True, serialize=False)),
                 ('tracking_number', models.CharField(max_length=100, unique=True)),
                 ('sender_name', models.CharField(max_length=255)),
-                ('sender_address', djongo.models.fields.EmbeddedField(model_container=parcels.models.Address)),
+                ('sender_address', djongo.models.fields.EmbeddedModelField(
+                    model_container=parcels.models.Address)),
                 ('recipient_name', models.CharField(max_length=255)),
-                ('recipient_address', djongo.models.fields.EmbeddedField(model_container=parcels.models.Address)),
-                ('current_status', models.CharField(choices=[('pending', 'Pending'), ('in_transit', 'In Transit'), ('delivered', 'Delivered'), ('failed', 'Failed')], default='pending', max_length=20)),
+                ('recipient_address', djongo.models.fields.EmbeddedModelField(
+                    model_container=parcels.models.Address)),
+                ('current_status', models.CharField(choices=[('pending', 'Pending'), ('in_transit', 'In Transit'), (
+                    'delivered', 'Delivered'), ('failed', 'Failed')], default='pending', max_length=20)),
                 ('current_location_lat', models.FloatField(blank=True, null=True)),
                 ('current_location_lng', models.FloatField(blank=True, null=True)),
-                ('current_location_address', models.CharField(blank=True, max_length=255)),
+                ('current_location_address', models.CharField(
+                    blank=True, max_length=255)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('estimated_delivery', models.DateTimeField(blank=True, null=True)),
-                ('status_history', djongo.models.fields.ArrayField(default=list, model_container=parcels.models.StatusHistory)),
+                ('status_history', djongo.models.fields.ArrayModelField(
+                    default=list, model_container=parcels.models.StatusHistory)),
             ],
             options={
                 'db_table': 'parcels',

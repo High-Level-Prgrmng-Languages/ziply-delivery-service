@@ -16,16 +16,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Page',
             fields=[
-                ('_id', models.CharField(default=pages.models.generate_uuid, max_length=36, primary_key=True, serialize=False)),
+                ('_id', models.CharField(default=pages.models.generate_uuid,
+                 max_length=36, primary_key=True, serialize=False)),
                 ('url', models.URLField(unique=True)),
                 ('title', models.CharField(max_length=255)),
                 ('content', models.TextField()),
                 ('owner_id', models.CharField(max_length=255)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('status', models.CharField(choices=[('active', 'Active'), ('inactive', 'Inactive'), ('archived', 'Archived')], default='active', max_length=20)),
-                ('metadata', djongo.models.fields.EmbeddedField(default=dict, model_container=pages.models.PageMetadata)),
-                ('analytics', djongo.models.fields.EmbeddedField(default=dict, model_container=pages.models.PageAnalytics)),
+                ('status', models.CharField(choices=[('active', 'Active'), ('inactive', 'Inactive'), (
+                    'archived', 'Archived')], default='active', max_length=20)),
+                ('metadata', djongo.models.fields.EmbeddedModelField(
+                    default=dict, model_container=pages.models.PageMetadata)),
+                ('analytics', djongo.models.fields.EmbeddedModelField(
+                    default=dict, model_container=pages.models.PageAnalytics)),
             ],
             options={
                 'db_table': 'pages',
