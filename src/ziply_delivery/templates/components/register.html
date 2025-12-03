@@ -1,45 +1,94 @@
 <div class="auth-card" role="form" aria-labelledby="register-title">
+  <h2 id="register-title">Create Your Ziply Account</h2>
+  <p class="subtitle">Complete the form to start shipping with us</p>
 
-    <h2 id="register-title">Create Your Ziply Account</h2>
-    <p class="subtitle">Complete the form to start shipping with us</p>
-
-    <form method="post" aria-label="Registration form">
-
-        <div class="form-group">
-            <label for="reg-email">Email Address</label>
-            <input type="email" id="reg-email" name="email" aria-required="true" required>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group" style="flex: 1;">
-                <label for="reg-first-name">First Name</label>
-                <input type="text" id="reg-first-name" name="first_name" aria-required="true" required>
-            </div>
-            <div class="form-group" style="flex: 1;">
-                <label for="reg-last-name">Last Name</label>
-                <input type="text" id="reg-last-name" name="last_name" aria-required="true" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="reg-phone">Telephone Number</label>
-            <input type="tel" id="reg-phone" name="phone" aria-required="true" required>
-        </div>
-
-        <div class="form-group">
-            <label for="reg-password">Password</label>
-            <input type="password" id="reg-password" name="password" aria-required="true" required>
-        </div>
-
-        <div class="form-group">
-            <label for="reg-confirm-password">Confirm Password</label>
-            <input type="password" id="reg-confirm-password" name="confirm_password" aria-required="true" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Create Account</button>
-    </form>
-
-    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">
-        <a href="{% url 'login' %}" class="switch-link">Already have an account? Log in</a>
+  <form method="post" aria-label="Registration form">
+    {% csrf_token %}
+     <div class="form-group">
+      <label for="reg-username">Username</label>
+      <input
+        type="text"
+        id="reg-username"
+        name="username"
+        aria-required="true"
+        required
+      />
     </div>
+
+   <div class="form-group">
+      <label for="reg-email">Email Address</label>
+      <input
+        type="email"
+        id="reg-email"
+        name="email"
+        aria-required="true"
+        required
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 1">
+        <label for="reg-first-name">First Name</label>
+        <input
+          type="text"
+          id="reg-first-name"
+          name="first_name"
+          aria-required="true"
+          required
+        />
+      </div>
+      <div class="form-group" style="flex: 1">
+        <label for="reg-last-name">Last Name</label>
+        <input
+          type="text"
+          id="reg-last-name"
+          name="last_name"
+          aria-required="true"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="reg-phone">Telephone Number</label>
+      <input
+        type="tel"
+        id="reg-phone"
+        name="phone"
+        aria-required="true"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="reg-password">Password</label>
+      <input
+        type="password"
+        id="reg-password"
+        name="password"
+        aria-required="true"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="reg-confirm-password">Confirm Password</label>
+      <input
+        type="password"
+        id="reg-confirm-password"
+        name="confirm_password"
+        aria-required="true"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Account</button>
+  </form>
+
+  <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem">
+    <a href="{% url 'login' %}" class="switch-link"
+      >Already have an account? Log in</a
+    >
+  </div>
 </div>
+
