@@ -2,8 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-from django.db import models
-
 
 class Company(models.Model):
     name = models.CharField(max_length=200)
@@ -17,6 +15,3 @@ class Company(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True)  # set once when created
     updated_at = models.DateTimeField(auto_now=True)      # updates every save
-
-    def __str__(self):
-        return self.name

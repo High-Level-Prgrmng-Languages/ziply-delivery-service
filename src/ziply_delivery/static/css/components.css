@@ -1,0 +1,61 @@
+/**
+* Description: Main Stylesheet for the website that handles global styles
+* Author: Carson Fujita
+* Date: December 6th, 2025
+* License: GPL-3.0-or-later
+* Requires: global.css
+*/
+
+.search-container {
+	display: flex;
+	position: relative;
+	max-width: 400px;
+	padding: 5px 5px 5px 10px;
+	border-radius: 20px;
+	background-color: transparent;
+	border-radius: 20px;
+	border: 3px solid #C0CAF5;
+	box-shadow: 0 0 6px 0 rgba(192, 202, 245, 0.80);
+}
+
+.search-container>form {
+	/* -- Layout -- */
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+}
+
+.search-input,
+.search-btn {
+	/* -- Style -- */
+	border: none;
+	outline: none;
+	background-color: transparent;
+	color: #C0CAF5;
+}
+
+.search-input {
+	flex-grow: 2;
+}
+
+.search-icon {
+	filter: drop-shadow(0px 0px 4px #C0CAF5);
+	font-variation-settings: 'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 40
+}
+
+.search-btn:hover {
+	filter: drop-shadow(0px 0px 3px #C0CAF5);
+}
+
+.search-btn:active {
+	filter: drop-shadow(0px 0px 1px #C0CAF5);
+}
+
+.visually-hidden {
+	visibility: hidden;
+	display: none;
+}

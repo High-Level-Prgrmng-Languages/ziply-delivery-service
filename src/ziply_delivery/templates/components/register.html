@@ -1,9 +1,24 @@
 <div class="auth-card" role="form" aria-labelledby="register-title">
-  <h2 id="register-title">Create Your Ziply Account</h2>
+	<h2 id="register-title">{{ title|default:"Create your Ziply account" }}</h2>
   <p class="subtitle">Complete the form to start shipping with us</p>
+  <p class="subtitle error">{{ error|default:"" }}</p>
 
   <form method="post" aria-label="Registration form">
     {% csrf_token %}
+
+		{% if isCompany %}
+
+     <div class="form-group">
+      <label for="reg-company">Company Name</label>
+      <input
+        type="text"
+        id="reg-company"
+        name="company"
+        aria-required="true"
+        required
+      />
+    </div>
+		{% else %}
      <div class="form-group">
       <label for="reg-username">Username</label>
       <input
@@ -14,6 +29,7 @@
         required
       />
     </div>
+		{% endif %}
 
    <div class="form-group">
       <label for="reg-email">Email Address</label>
@@ -26,6 +42,20 @@
       />
     </div>
 
+		{% if isCompany %}
+<div class="form-group">
+      <label for="reg-zip-code">ZipCode</label>
+      <input
+        type="text"
+        id="reg-zip-code"
+        name="zip"
+        aria-required="true"
+        required
+      />
+    </div>
+
+
+		{% else %}
     <div class="form-row">
       <div class="form-group" style="flex: 1">
         <label for="reg-first-name">First Name</label>
@@ -49,6 +79,7 @@
       </div>
     </div>
 
+{% endif %}
     <div class="form-group">
       <label for="reg-phone">Telephone Number</label>
       <input

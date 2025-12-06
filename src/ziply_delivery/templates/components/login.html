@@ -57,6 +57,7 @@
 <div class="auth-card">
   <h2>Secure Access Portal</h2>
   <p class="subtitle">Enter your credentials to access your dashboard</p>
+  <p class="subtitle error">{{ error|default:"" }}</p>
 
   <form method="post">
     {% csrf_token %}
@@ -66,6 +67,7 @@
         type="text"
         id="login-username"
         class="input-field"
+        name="username"
         placeholder="Enter your email or username"
         required
       />
@@ -75,6 +77,7 @@
       <label for="login-password" class="form-label">Password</label>
       <input
         type="password"
+        name="password"
         id="login-password"
         class="input-field"
         placeholder=" "

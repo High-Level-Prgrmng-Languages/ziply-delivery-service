@@ -1,5 +1,5 @@
 {% extends 'page.html' %} 
 {% block title %}Login{% endblock %}
 {% block content %}
-	{% include 'components/login.html' %}
+	{% include 'components/login.html' with error=error %}
 {% endblock %}

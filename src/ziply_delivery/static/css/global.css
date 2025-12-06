@@ -39,9 +39,19 @@ body {
 	font-style: normal;
 }
 
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	align-self: stretch;
+}
+
 .flex {
 	display: flex;
 }
+
 
 /* --- Fonts --- */
 
