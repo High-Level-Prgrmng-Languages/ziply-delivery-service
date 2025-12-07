@@ -3,6 +3,10 @@
 * Author: Carson Fujita
 * Date: November 29th, 2025
 * License: GPL-3.0-or-later
+* 
+* Enhanced by: Jyot Bhavsar
+* Date: December 6, 2025
+* Changes: Added professional animations, enhanced container styling, professional card components, and modern button designs
 */
 
 /* --- Global Colors -- */
@@ -26,6 +30,77 @@
 	--center-gradient: linear-gradient(271deg, #0C0E14 0.79%, #1A1B26 48.63%, #0C0E14 99.21%);
 	--gradient-one: linear-gradient(91deg, #292E42 46.33%, #0C0E14 83.19%);
 	--metalic-shine: linear-gradient(272deg, #3B4261 -0.22%, #A9B1D6 48.49%, #3B4261 100%);
+}
+
+/* Add professional animations and transitions */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Enhanced body styling */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background: var(--center-gradient);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Professional container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Enhanced main layout */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    min-height: calc(100vh - 120px);
+    padding: 40px 20px;
+}
+
+/* Professional card styling */
+.card {
+    background: var(--background-light);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--foreground-dark);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Professional buttons */
+.btn-professional {
+    background: var(--metalic-shine);
+    color: var(--foreground-light);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-professional:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(122, 162, 247, 0.3);
+    filter: brightness(1.1);
 }
 
 /* --- Global Styles -- */

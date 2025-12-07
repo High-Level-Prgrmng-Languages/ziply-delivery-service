@@ -1,4 +1,5 @@
 /* color variables with fallbacks */
+/*Author Carson Fujita*/
 :root {
   --background-primary: #ffffff;
   --background-dark: #e6e6e6;
@@ -12,33 +13,100 @@
   --focus-ring: 3px;
 }
 
-/* card container */
+/**
+* Enhanced by: Jyot Bhavsar
+* Date: December 6, 2025
+* Changes: Added professional auth card with backdrop blur effects, enhanced form inputs with focus states, and modern primary button styling with animations
+*/
+
+/* Professional auth card */
 .auth-card {
-  background: var(--background-primary);
-  border: 1px solid var(--background-dark);
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 500px;
-  width: 100%;
-  margin: 1rem auto;
-  box-shadow: 0 10px 15px rgba(0,0,0,0.08);
-  color: var(--foreground);
-  box-sizing: border-box;
+    background: rgba(41, 46, 66, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--foreground-dark);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 450px;
+    width: 100%;
+    margin: 2rem auto;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+    color: var(--foreground-light);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
-/* headings and subtitle */
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--metalic-shine);
+}
+
 .auth-card h2 {
-  text-align: center;
-  font-size: 1.4rem;
-  margin: 0 0 0.4rem 0;
-  font-weight: 700;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    color: var(--foreground-light);
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.subtitle {
-  text-align: center;
-  color: var(--foreground-light2);
-  font-size: 0.9rem;
-  margin: 0 0 1.25rem 0;
+/* Professional form inputs */
+.input-field {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1rem;
+    border: 2px solid var(--foreground-dark);
+    border-radius: 12px;
+    box-sizing: border-box;
+    background: rgba(22, 22, 30, 0.8);
+    color: var(--foreground-light);
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 4px rgba(122, 162, 247, 0.1);
+    background: rgba(22, 22, 30, 1);
+}
+
+.input-field::placeholder {
+    color: var(--foreground-light2);
+}
+
+/* Professional primary button */
+.btn-primary {
+    background: var(--metalic-shine);
+    color: var(--foreground-light);
+    width: 100%;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(122, 162, 247, 0.3);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
 }
 
 /* form spacing */
@@ -55,27 +123,6 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 600;
-}
-
-/* inputs */
-.input-field {
-  width: 100%;
-  padding: 0.6rem 0.75rem;
-  font-size: 0.95rem;
-  border: 1px solid var(--input-border);
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  background: #fff;
-  color: var(--foreground);
-  transition: border 120ms ease, box-shadow 120ms ease;
-}
-
-/* focus for accessibility - keyboard users see a clear ring */
-.input-field:focus,
-.input-field:focus-visible {
-  outline: none;
-  border-color: var(--blues-blue);
-  box-shadow: 0 0 0 var(--focus-ring) rgba(37,99,235,0.12);
 }
 
 /* disabled inputs */

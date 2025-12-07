@@ -1,11 +1,89 @@
+<style>
+/* Search Bar Component Styles */
+.search-container {
+    display: flex;
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.search-container form {
+    display: flex;
+    width: 100%;
+    padding: 8px 8px 8px 16px;
+    border-radius: 25px;
+    background: rgba(41, 46, 66, 0.95);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--blues-blue);
+    box-shadow: 0 8px 32px rgba(122, 162, 247, 0.2);
+    transition: all 0.3s ease;
+}
+
+.search-container:hover form {
+    box-shadow: 0 12px 40px rgba(122, 162, 247, 0.3);
+    transform: translateY(-2px);
+}
+
+.search-container:focus-within form {
+    border-color: var(--foreground-light);
+    box-shadow: 0 0 0 4px rgba(122, 162, 247, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--foreground-light);
+    font-size: 1rem;
+    padding: 8px 12px;
+    outline: none;
+    font-family: "Inter", sans-serif;
+}
+
+.search-input::placeholder {
+    color: var(--foreground-light2);
+}
+
+.search-btn {
+    background: var(--metalic-shine);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.search-icon {
+    color: var(--foreground-light);
+    font-size: 1.2rem;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+</style>
+
 <div class="search-container" role="search" aria-label="Site search">
 	<form method="get" action="/search">
 		<label for="search-input" class="visually-hidden">Search</label>
-		<input type="text" id="search-input" name="q" class="search-input" placeholder="Search"
+		<input type="text" id="search-input" name="q" class="search-input" placeholder="Search packages, tracking numbers..."
 			aria-required="true">
 		<button type="submit" class="search-btn" aria-label="Submit search">
-			<span class="material-symbols-outlined search-icon"> search </span>
+			<span class="material-symbols-outlined search-icon">search</span>
 		</button>
-		</input>
 	</form>
 </div>
