@@ -16,18 +16,10 @@ from . import views
 # URL patterns for the entire application
 urlpatterns = [
     path('', views.home, name='home'),
-    path('login', views.login, name='login'),
-    path('register', views.register, name='register'),
+    path('', include('client.urls')),
     path('support', views.support, name='support'),
-    # Root endpoint
-    path('api', views.api_root, name='api-root'),
+    path('about', views.about, name='support'),
+    path('api', include('api.urls')),
     path('company/', include('company.urls')),
-    path('health/', views.health_check,
-         name='health-check'),     # Health monitoring
-    # Django admin interface
     path('admin/', admin.site.urls),
-    # Parcel tracking API
-    path('api/parcels/', include('parcels.urls')),
-    # Pages management API
-    path('api/pages/', include('pages.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

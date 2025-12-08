@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     address = models.TextField()
     zipcode = models.CharField(max_length=10)
     telephone = models.CharField(max_length=20)
