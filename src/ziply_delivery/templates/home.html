@@ -1,5 +1,432 @@
 {% extends 'page.html' %}
-{% block title %}Register{% endblock %} 
+{% block title %}Home - Ziply Delivery{% endblock %} 
 {% block content %} 
-	{% include 'components/search_bar.html' %} 
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Fast, Reliable Package Delivery</h1>
+                <p>Track your packages in real-time with Ziply Delivery's secure and efficient service</p>
+                <div class="hero-actions">
+                    <a href="/create/" class="btn-professional">Ship Now</a>
+                    <a href="/track/" class="btn-professional secondary">Track Package</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Ziply Delivery?</h2>
+                <p>Experience the difference with our premium delivery services</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Real-time Tracking -->
+                <div class="feature-card">
+                    <div class="feature-icon">T</div>
+                    <h3>Real-time Tracking</h3>
+                    <p>Monitor your package every step of the way with live location updates and delivery notifications.</p>
+                    <a href="/track/" class="feature-link">Track Now</a>
+                </div>
+
+                <!-- Fast Delivery -->
+                <div class="feature-card">
+                    <div class="feature-icon">F</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Express delivery options available with same-day and next-day delivery to major cities.</p>
+                    <a href="/create/" class="feature-link">Ship Fast</a>
+                </div>
+
+                <!-- Secure Handling -->
+                <div class="feature-card">
+                    <div class="feature-icon">S</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Your packages are protected with advanced security measures and insurance coverage.</p>
+                    <a href="/about/" class="feature-link">Learn More</a>
+                </div>
+
+                <!-- 24/7 Support -->
+                <div class="feature-card">
+                    <div class="feature-icon">24</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is always ready to help you with any questions or concerns.</p>
+                    <a href="/support/" class="feature-link">Get Help</a>
+                </div>
+
+                <!-- Easy Shipping -->
+                <div class="feature-card">
+                    <div class="feature-icon">E</div>
+                    <h3>Easy Shipping</h3>
+                    <p>Simple online booking process with automatic label generation and pickup scheduling.</p>
+                    <a href="/create/" class="feature-link">Start Shipping</a>
+                </div>
+
+                <!-- Global Network -->
+                <div class="feature-card">
+                    <div class="feature-icon">G</div>
+                    <h3>Global Reach</h3>
+                    <p>Worldwide delivery network connecting businesses and individuals across the globe.</p>
+                    <a href="/about/" class="feature-link">View Coverage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="stats-grid mobile-horizontal">
+                <div class="stat-item">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Packages Delivered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">On-Time Delivery</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Countries Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(26, 27, 38, 0.95), rgba(41, 46, 66, 0.95));
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--foreground-dark);
+}
+
+.hero-content h1 {
+    color: var(--foreground-light);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.hero-content p {
+    color: var(--foreground-light);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-professional.secondary {
+    background: rgba(122, 162, 247, 0.2);
+    color: var(--foreground-light);
+    border: 1px solid var(--blues-blue);
+}
+
+.btn-professional.secondary:hover {
+    background: rgba(122, 162, 247, 0.3);
+    color: var(--foreground-light);
+}
+
+/* Features Section */
+.features-section {
+    padding: 4rem 0;
+    background: rgba(12, 14, 20, 0.5);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    color: var(--foreground-light);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.section-header p {
+    color: var(--foreground-light);
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: rgba(26, 27, 38, 0.95);
+    border: 1px solid var(--blues-blue);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--metalic-shine);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(122, 162, 247, 0.2);
+    border-color: var(--foreground-light);
+    background: rgba(26, 27, 38, 1);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--blues-blue);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--background-extra-Dark);
+    font-weight: bold;
+}
+
+.feature-card h3 {
+    color: var(--foreground-light);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--foreground-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+}
+
+.feature-link {
+    color: var(--blues-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid var(--blues-blue);
+    border-radius: 6px;
+}
+
+.feature-link:hover {
+    color: var(--foreground-light);
+    background: var(--blues-blue);
+    transform: translateY(-2px);
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 3rem 0;
+    background: rgba(26, 27, 38, 0.8);
+    margin-top: 4rem;
+    border-top: 1px solid var(--foreground-dark);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 1.5rem;
+    background: rgba(12, 14, 20, 0.6);
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    border-color: var(--blues-blue);
+    transform: translateY(-4px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--blues-blue);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--foreground-light);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .feature-card {
+        padding: 2rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .stat-item {
+        padding: 1.2rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .stats-section {
+        padding: 2rem 0;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+    
+    .stat-item {
+        padding: 1.2rem !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+        background: rgba(26, 27, 38, 0.9) !important;
+        border: 1px solid var(--blues-blue) !important;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem !important;
+        margin-bottom: 0 !important;
+        margin-right: 1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem !important;
+        text-transform: none !important;
+        letter-spacing: 0 !important;
+        line-height: 1.2 !important;
+        text-align: right !important;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile horizontal stats */
+@media (max-width: 480px) {
+    .mobile-horizontal {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+    
+    .mobile-horizontal .stat-item {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+        padding: 1rem 1.5rem !important;
+        background: rgba(26, 27, 38, 0.95) !important;
+        border: 1px solid var(--blues-blue) !important;
+    }
+    
+    .mobile-horizontal .stat-number {
+        font-size: 1.5rem !important;
+        margin-bottom: 0 !important;
+        margin-right: 1rem !important;
+        color: var(--blues-blue) !important;
+        font-weight: 700 !important;
+    }
+    
+    .mobile-horizontal .stat-label {
+        font-size: 0.85rem !important;
+        text-transform: none !important;
+        letter-spacing: 0 !important;
+        line-height: 1.2 !important;
+        text-align: right !important;
+        color: var(--foreground-light) !important;
+    }
+}
+</style>
 {% endblock %}

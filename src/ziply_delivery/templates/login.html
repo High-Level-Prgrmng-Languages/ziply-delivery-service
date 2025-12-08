@@ -1,5 +1,159 @@
-{% extends 'page.html' %} 
-{% block title %}Login{% endblock %}
+{% extends 'page.html' %}
+{% block title %}Login - Ziply Delivery{% endblock %}
 {% block content %}
-	{% include 'components/login.html' with error=error %}
+<div class="login-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Login</h1>
+            <p>Sign in to your account</p>
+        </div>
+
+        {% if error %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+
+        <div class="form-container">
+            <form method="post" class="login-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+
+            <div class="form-footer">
+                <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.login-page {
+    min-height: 80vh;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    background: rgba(12, 14, 20, 0.3);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    color: var(--foreground-light);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-header p {
+    color: var(--foreground-light);
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(26, 27, 38, 0.95);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 2px solid var(--blues-blue);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--foreground-light);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--blues-blue);
+    border-radius: 8px;
+    background: rgba(12, 14, 20, 0.9);
+    color: var(--foreground-light);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--foreground-light);
+    box-shadow: 0 0 0 3px rgba(122, 162, 247, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--metalic-shine);
+    color: var(--foreground-light);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(122, 162, 247, 0.3);
+    filter: brightness(1.1);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--foreground-dark);
+}
+
+.form-footer a {
+    color: var(--blues-blue);
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+</style>
 {% endblock %}

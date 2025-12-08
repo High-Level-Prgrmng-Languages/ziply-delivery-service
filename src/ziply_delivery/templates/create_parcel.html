@@ -1,0 +1,181 @@
+{% extends 'page.html' %}
+{% block title %}Shipping - Ziply Delivery{% endblock %}
+{% block content %}
+<div class="create-parcel-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Ship Your Package</h1>
+            <p>Fill in the details to ship your package with Ziply Delivery</p>
+        </div>
+
+        <div class="form-container">
+            <form method="post" class="parcel-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="sender_name">Sender Name</label>
+                    <input type="text" id="sender_name" name="sender_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="sender_address">Sender Address</label>
+                    <textarea id="sender_address" name="sender_address" rows="3" placeholder="Enter full sender address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient_name">Recipient Name</label>
+                    <input type="text" id="recipient_name" name="recipient_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient_address">Recipient Address</label>
+                    <textarea id="recipient_address" name="recipient_address" rows="3" placeholder="Enter full delivery address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="estimated_delivery">Estimated Delivery</label>
+                    <input type="datetime-local" id="estimated_delivery" name="estimated_delivery" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="current_location_address">Current Location</label>
+                    <input type="text" id="current_location_address" name="current_location_address" placeholder="Warehouse A">
+                </div>
+
+                <button type="submit" class="submit-btn">Ship Package</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.create-parcel-page {
+    min-height: 80vh;
+    padding: 2rem 0;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    color: var(--foreground-light);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--foreground-light2);
+    font-size: 1.1rem;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(26, 27, 38, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--foreground-light);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--foreground-dark);
+    border-radius: 8px;
+    background: var(--background-extra-Dark);
+    color: var(--foreground-light);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+}
+
+/* Special styling for datetime input */
+.form-group input[type="datetime-local"] {
+    background: var(--background-light);
+    color: var(--foreground-light);
+    color-scheme: dark;
+}
+
+.form-group input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    background-color: var(--foreground-light);
+    border-radius: 3px;
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.form-group input[type="datetime-local"]::-webkit-datetime-edit {
+    color: var(--foreground-light);
+}
+
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
+    background: transparent;
+}
+
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-text {
+    color: var(--foreground-light2);
+}
+
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-month-field,
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-day-field,
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-year-field,
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
+.form-group input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
+    color: var(--foreground-light);
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--foreground-dark);
+    border-radius: 8px;
+    background: var(--background-extra-Dark);
+    color: var(--foreground-light);
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--blues-blue);
+    color: var(--background-extra-Dark);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--foreground-light);
+    transform: translateY(-2px);
+}
+</style>
+{% endblock %}
