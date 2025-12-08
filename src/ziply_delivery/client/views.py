@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as Login
-from models import Customer
+from .models import Customer
 
 
 def login(request):
