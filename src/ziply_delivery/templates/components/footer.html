@@ -1,0 +1,128 @@
+<style>
+  /* Footer Component Styles */
+  .footer {
+    background: rgba(12, 14, 20, 0.95);
+    backdrop-filter: blur(20px);
+    color: var(--foreground-light2);
+    padding: 3rem 0 2rem 0;
+    border-top: 2px solid var(--blues-blue);
+    margin-top: auto;
+    position: relative;
+  }
+
+  .footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--metalic-shine);
+  }
+
+  .footer-link {
+    color: var(--foreground-light2);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 4px 0;
+    border-radius: 4px;
+  }
+
+  .footer-link:hover {
+    color: var(--blues-blue);
+    transform: translateX(4px);
+  }
+
+  .footer h5 {
+    color: var(--foreground-light);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 769px) {
+    .footer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--foreground-dark);
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  @media (min-width: 769px) {
+    .footer-bottom {
+      flex-direction: row;
+      text-align: left;
+    }
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    color: var(--foreground-light2);
+  }
+
+  .footer-bottom div {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 769px) {
+    .footer-bottom div {
+      margin-top: 0;
+    }
+  }
+</style>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Company column -->
+      <div>
+        <h5>Company</h5>
+        <a href="/company/register" class="footer-link">Sign up</a>
+        <a href="/about" class="footer-link">About Us</a>
+      </div>
+      <!-- Account column -->
+      <div>
+        <h5>Account</h5>
+        <a href="/register" class="footer-link">Create Account</a>
+        <a href="/login" class="footer-link">Login</a>
+      </div>
+      <!-- Services Column -->
+      <div>
+        <h5>Services</h5>
+        <a href="/company/packages" class="footer-link">Tracking</a>
+        <a href="/client/packages" class="footer-link">Shipping</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Ziply Delivery. All rights reserved.</p>
+      <div>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

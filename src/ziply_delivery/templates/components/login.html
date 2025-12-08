@@ -1,0 +1,192 @@
+<style>
+  /* Login Component Styles */
+  .auth-card {
+    background: rgba(41, 46, 66, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--foreground-dark);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    margin: 2rem auto;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+    color: var(--foreground-light);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--metalic-shine);
+  }
+
+  .auth-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 8px 0;
+    color: var(--foreground-light);
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .auth-card p.subtitle {
+    color: var(--foreground-light2);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .auth-card p.subtitle.error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border-left: 3px solid #ff6b6b;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    color: var(--foreground-light2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1rem;
+    border: 2px solid var(--foreground-dark);
+    border-radius: 12px;
+    box-sizing: border-box;
+    background: rgba(22, 22, 30, 0.8);
+    color: var(--foreground-light);
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 4px rgba(122, 162, 247, 0.1);
+    background: rgba(22, 22, 30, 1);
+  }
+
+  .input-field::placeholder {
+    color: var(--foreground-light2);
+  }
+
+  .btn-primary {
+    background: var(--metalic-shine);
+    color: var(--foreground-light);
+    width: 100%;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1rem;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(122, 162, 247, 0.3);
+    filter: brightness(1.1);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .switch-link {
+    color: var(--blues-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .switch-link:hover {
+    color: var(--foreground-light);
+    background: rgba(122, 162, 247, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .auth-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--foreground-light2);
+  }
+</style>
+
+<div class="auth-card">
+  <h2>Secure Access Portal</h2>
+  <p class="subtitle">Enter your credentials to access your dashboard</p>
+  {% if error %}
+    <p class="subtitle error">{{ error }}</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="login-username" class="form-label">Email/Username</label>
+      <input
+        type="text"
+        id="login-username"
+        class="input-field"
+        name="username"
+        placeholder="Enter your email or username"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="login-password" class="form-label">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="login-password"
+        class="input-field"
+        placeholder="Enter your password"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn-primary">
+      Login to Portal
+    </button>
+  </form>
+
+  <div class="auth-footer">
+    <span>Don't have an account? </span>
+    <button onclick="window.location.href='/register'" class="switch-link">
+      Create Account
+    </button>
+  </div>
+</div>

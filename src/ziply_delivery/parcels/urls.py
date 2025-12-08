@@ -13,7 +13,7 @@ from . import views
 urlpatterns = [
     # /api/parcels/ - List all parcels (GET) or create new parcel (POST)
     path('', views.parcel_list_create, name='parcel-list-create'),
-    
+
     # /api/parcels/{tracking_number}/ - Get specific parcel by tracking number
     path('<str:tracking_number>/', views.get_parcel, name='get_parcel'),
 ]

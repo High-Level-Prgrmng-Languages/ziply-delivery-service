@@ -14,26 +14,27 @@ from rest_framework.response import Response
 from .models import Parcel
 from django.utils import timezone
 
+
 @api_view(['GET', 'POST'])
 def parcel_list_create(request):
     """
     Handle both listing all parcels (GET) and creating new parcels (POST)
-    
+
     GET /api/parcels/
     - Returns list of all parcels with basic information
     - Used by admin dashboard to see all parcels
-    
+
     POST /api/parcels/
     - Creates a new parcel in the system
     - Automatically generates tracking number and UUID
     - Initializes status history with 'pending' status
     """
-    
+
     if request.method == 'GET':
         # Retrieve all parcels from MongoDB
         parcels = Parcel.objects.all()
         parcel_data = []
-        
+
         # Convert each parcel to JSON-serializable format
         for parcel in parcels:
             parcel_data.append({
@@ -46,9 +47,9 @@ def parcel_list_create(request):
                 'created_at': parcel.created_at.isoformat() if parcel.created_at else None,
                 'estimated_delivery': parcel.estimated_delivery.isoformat() if parcel.estimated_delivery else None
             })
-        
+
         return Response(parcel_data)
-    
+
     elif request.method == 'POST':
         """
         Create a new parcel with the provided data
@@ -66,30 +67,32 @@ def parcel_list_create(request):
                 sender_name=request.data.get('sender_name'),
                 recipient_name=request.data.get('recipient_name'),
                 estimated_delivery=request.data.get('estimated_delivery'),
-                current_location_address=request.data.get('current_location_address', ''),
+                current_location_address=request.data.get(
+                    'current_location_address', ''),
                 status_history=[{
                     'status': 'pending',
                     'timestamp': timezone.now(),
                     'notes': 'Parcel created'
                 }]
             )
-            
+
             # Return success response with parcel details
             return Response({
                 'id': str(parcel._id),
                 'tracking_number': parcel.tracking_number,
                 'status': parcel.current_status
             }, status=status.HTTP_201_CREATED)
-            
+
         except Exception as e:
             # Return error if parcel creation fails
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET'])
 def get_parcel(request, tracking_number):
     """
     Retrieve a specific parcel by its tracking number
-    
+
     GET /api/parcels/{tracking_number}/
     - Returns complete parcel information including status history
     - Used by customers to track their packages
@@ -98,7 +101,7 @@ def get_parcel(request, tracking_number):
     try:
         # Find parcel by tracking number
         parcel = Parcel.objects.get(tracking_number=tracking_number)
-        
+
         # Return complete parcel information
         return Response({
             'id': str(parcel._id),
@@ -111,7 +114,7 @@ def get_parcel(request, tracking_number):
             'created_at': parcel.created_at.isoformat() if parcel.created_at else None,
             'estimated_delivery': parcel.estimated_delivery.isoformat() if parcel.estimated_delivery else None
         })
-        
+
     except Parcel.DoesNotExist:
         # Return 404 if tracking number not found
         return Response({'error': 'Parcel not found'}, status=status.HTTP_404_NOT_FOUND)

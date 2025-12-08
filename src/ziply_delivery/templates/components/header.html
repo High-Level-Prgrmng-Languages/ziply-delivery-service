@@ -1,0 +1,282 @@
+<style>
+/* Header Component Styles */
+.header {
+    background: rgba(26, 27, 38, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--foreground-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--metalic-shine);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    padding: 0 20px;
+}
+
+/* Logo Section - Left Side */
+.header .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header .logo-icon {
+    background: var(--blues-blue);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(122, 162, 247, 0.3);
+    transition: all 0.3s ease;
+}
+
+.header .logo-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(122, 162, 247, 0.4);
+}
+
+.header .logo-icon span {
+    color: var(--background-extra-Dark);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.header .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--foreground-light);
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Right Side Container */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Desktop Navigation - Right Side */
+.header-desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-desktop-nav .nav-link {
+    color: var(--foreground-light2);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.header-desktop-nav .nav-link:hover {
+    color: var(--foreground-light);
+    background: rgba(122, 162, 247, 0.1);
+    transform: translateY(-1px);
+}
+
+.header-desktop-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--blues-blue);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.header-desktop-nav .nav-link:hover::after {
+    width: 80%;
+}
+
+/* Search Container */
+#header-search-container {
+    min-width: 300px;
+}
+
+/* Mobile Menu Button */
+.header-mobile-toggle {
+    display: none;
+}
+
+.mobile-menu-btn {
+    background: transparent;
+    border: 2px solid var(--blues-blue);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(122, 162, 247, 0.1);
+    transform: scale(1.05);
+}
+
+.mobile-menu-btn::before,
+.mobile-menu-btn::after,
+.mobile-menu-btn span {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--foreground-light);
+    margin: 4px auto;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.mobile-menu-btn span {
+    position: relative;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    background: rgba(26, 27, 38, 0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--foreground-dark);
+    padding: 1rem 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.mobile-menu.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu .nav-link {
+    display: block;
+    color: var(--foreground-light2);
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.mobile-menu .nav-link:hover {
+    color: var(--foreground-light);
+    background: rgba(122, 162, 247, 0.1);
+    border-left-color: var(--blues-blue);
+    transform: translateX(4px);
+}
+
+#mobile-search-container {
+    padding: 1rem 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-right {
+        display: none;
+    }
+    
+    .header-mobile-toggle {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+</style>
+
+<header class="header">
+    <div class="container">
+        <!-- Logo - Left Side -->
+        <div class="logo-section">
+            <div class="logo-icon">
+                <span>Z</span>
+            </div>
+            <span class="logo-text">ZIPLY</span>
+        </div>
+
+        <!-- Right Side Container -->
+        <div class="header-right">
+            <!-- Search Bar Container -->
+            <div id="header-search-container"></div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="header-desktop-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/login" class="nav-link">Login</a>
+                <a href="/support" class="nav-link">Support</a>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="header-mobile-toggle">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu(this)" aria-label="Toggle mobile menu">
+                <span></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/login" class="nav-link">Login</a>
+        <a href="/support" class="nav-link">Support</a>
+        <div id="mobile-search-container"></div>
+    </div>
+</header>
+
+<script>
+function toggleMobileMenu(button) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const isActive = mobileMenu.classList.contains('active');
+    
+    if (isActive) {
+        mobileMenu.classList.remove('active');
+        button.setAttribute('aria-expanded', 'false');
+    } else {
+        mobileMenu.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+    }
+}
+</script>
