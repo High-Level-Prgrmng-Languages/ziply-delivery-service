@@ -49,8 +49,9 @@ def register(request):
         # ---------------------- CREATION
         user = User.objects.create_user(username=username,
                                         email=email, first_name=first_name, last_name=last_name, password=password)
-        new_customer = Customer(first_name=first_name, last_name=last_name,
-                                telephone=telephone, account=user.id(), email=email)
+        new_customer = Customer(
+            first_name=first_name, last_name=last_name,
+            telephone=telephone, account=user.id, email=email)
         new_customer.save()
         Login(request, user)
         return redirect('home')
