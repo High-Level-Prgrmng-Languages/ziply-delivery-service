@@ -113,7 +113,9 @@
       <div>
         <h5>Services</h5>
         <a href="/track/" class="footer-link">Tracking</a>
-        <a href="/create/" class="footer-link">Shipping</a>
+        {% if user.is_authenticated and user.groups.exists %}
+            <a href="/create/" class="footer-link">Shipping</a>
+        {% endif %}
       </div>
     </div>
 

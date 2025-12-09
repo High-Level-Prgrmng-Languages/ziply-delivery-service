@@ -37,7 +37,9 @@ class Parcel(models.Model):
     # Status choices for parcel tracking
     STATUS_CHOICES = [
         ('pending', 'Pending'),
+        ('picked_up', 'Picked Up'),
         ('in_transit', 'In Transit'),
+        ('out_for_delivery', 'Out for Delivery'),
         ('delivered', 'Delivered'),
         ('failed', 'Failed'),
     ]
@@ -55,6 +57,10 @@ class Parcel(models.Model):
     # Recipient information (simplified)
     recipient_name = models.CharField(max_length=255)
     recipient_address = models.TextField(blank=True)  # JSON string for address
+
+    # Package information
+    package_contents = models.TextField(blank=True)
+    package_weight = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
 
     # Current status and location
     current_status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')

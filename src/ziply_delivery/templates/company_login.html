@@ -1,11 +1,11 @@
 {% extends 'page.html' %}
-{% block title %}Login - Ziply Delivery{% endblock %}
+{% block title %}Company Login - Ziply Delivery{% endblock %}
 {% block content %}
 <div class="auth-page">
     <div class="container">
         <div class="auth-card">
-            <h2>Secure Access Portal</h2>
-            <p class="subtitle">Enter your credentials to access your dashboard</p>
+            <h2>Company Portal Access</h2>
+            <p class="subtitle">Create shipments and manage your business deliveries</p>
             
             {% if error %}
                 <p class="subtitle error">{{ error }}</p>
@@ -14,13 +14,13 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username" class="form-label">Email/Username</label>
+                    <label for="username" class="form-label">Company Username</label>
                     <input
                         type="text"
                         id="username"
                         name="username"
                         class="input-field"
-                        placeholder="Enter your email or username"
+                        placeholder="Enter your company username"
                         required
                     />
                 </div>
@@ -38,12 +38,13 @@
                 </div>
 
                 <button type="submit" class="btn-primary">
-                    Login to Portal
+                    Access Company Portal
                 </button>
             </form>
 
             <div class="auth-footer">
-                <p>Don't have an account? <a href="{% url 'register' %}" class="switch-link">Register here</a></p>
+                <p><a href="{% url 'login_select' %}" class="switch-link">← Back to login options</a></p>
+                <p>Don't have a company account? <a href="{% url 'company_register' %}" class="switch-link">Register your company here</a></p>
             </div>
         </div>
     </div>
@@ -200,6 +201,10 @@
     margin-top: 1.5rem;
     font-size: 0.9rem;
     color: var(--foreground-light2);
+}
+
+.auth-footer p {
+    margin: 0.5rem 0;
 }
 </style>
 {% endblock %}

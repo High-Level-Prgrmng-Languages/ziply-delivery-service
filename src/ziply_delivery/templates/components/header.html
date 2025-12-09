@@ -246,11 +246,13 @@
             <nav class="header-desktop-nav">
                 <a href="/" class="nav-link">Home</a>
                 {% if user.is_authenticated %}
-                    <a href="/create/" class="nav-link">Shipping</a>
+                    {% if user.groups.exists %}
+                        <a href="/create/" class="nav-link">Shipping</a>
+                    {% endif %}
                     <a href="/track/" class="nav-link">Track Package</a>
                     <a href="{% url 'logout' %}" class="nav-link">Logout</a>
                 {% else %}
-                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                    <a href="{% url 'login_select' %}" class="nav-link">Login</a>
                 {% endif %}
                 <a href="/support/" class="nav-link">Support</a>
             </nav>
@@ -268,7 +270,9 @@
     <div id="mobile-menu" class="mobile-menu">
         <a href="/" class="nav-link">Home</a>
         {% if user.is_authenticated %}
-            <a href="/create" class="nav-link">Create Parcel</a>
+            {% if user.groups.exists %}
+                <a href="/create" class="nav-link">Create Parcel</a>
+            {% endif %}
             <a href="/track" class="nav-link">Track Package</a>
             <a href="/logout" class="nav-link">Logout</a>
         {% else %}
