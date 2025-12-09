@@ -22,7 +22,7 @@ A Django-based REST API for parcel tracking using MongoDB as the database backen
 
 ### Prerequisites
 
-- Python 3.14 or higher
+- Python 3.11
 - MongoDB instance (local or cloud)
 - Git
 
