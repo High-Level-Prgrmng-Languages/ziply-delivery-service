@@ -1,11 +1,11 @@
 {% extends 'page.html' %}
-{% block title %}Login - Ziply Delivery{% endblock %}
+{% block title %}User Login - Ziply Delivery{% endblock %}
 {% block content %}
 <div class="auth-page">
     <div class="container">
         <div class="auth-card">
-            <h2>Secure Access Portal</h2>
-            <p class="subtitle">Enter your credentials to access your dashboard</p>
+            <h2>User Portal Access</h2>
+            <p class="subtitle">Track your packages and view delivery status</p>
             
             {% if error %}
                 <p class="subtitle error">{{ error }}</p>
@@ -43,6 +43,7 @@
             </form>
 
             <div class="auth-footer">
+                <p><a href="{% url 'login_select' %}" class="switch-link">← Back to login options</a></p>
                 <p>Don't have an account? <a href="{% url 'register' %}" class="switch-link">Register here</a></p>
             </div>
         </div>
@@ -200,6 +201,10 @@
     margin-top: 1.5rem;
     font-size: 0.9rem;
     color: var(--foreground-light2);
+}
+
+.auth-footer p {
+    margin: 0.5rem 0;
 }
 </style>
 {% endblock %}

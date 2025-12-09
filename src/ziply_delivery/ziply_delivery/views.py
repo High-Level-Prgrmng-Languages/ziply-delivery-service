@@ -11,13 +11,24 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 from django.contrib import messages
 
+@login_required
 def home(request):
     """
-    Home page rendering
+    Home page rendering - requires login
     """
-    return render(request, 'home.html')
+    # Check if user is part of a company group
+    user_groups = request.user.groups.all()
+    is_company = user_groups.exists()
+    
+    context = {
+        'is_company': is_company,
+        'company_name': user_groups.first().name if is_company else None
+    }
+    
+    return render(request, 'home.html', context)
 
 
 def support(request):
@@ -60,6 +71,14 @@ def create_parcel(request):
         import json
         
         try:
+            # Parse and make timezone-aware
+            estimated_delivery_str = request.POST.get('estimated_delivery')
+            estimated_delivery = None
+            if estimated_delivery_str:
+                estimated_delivery = parse_datetime(estimated_delivery_str)
+                if estimated_delivery and timezone.is_naive(estimated_delivery):
+                    estimated_delivery = timezone.make_aware(estimated_delivery)
+
             # Create initial status history
             initial_history = [{
                 'status': 'pending',
@@ -73,7 +92,9 @@ def create_parcel(request):
                 sender_address=request.POST.get('sender_address'),
                 recipient_name=request.POST.get('recipient_name'),
                 recipient_address=request.POST.get('recipient_address'),
-                estimated_delivery=request.POST.get('estimated_delivery'),
+                package_contents=request.POST.get('package_contents'),
+                package_weight=request.POST.get('package_weight'),
+                estimated_delivery=estimated_delivery,
                 current_location_address=request.POST.get('current_location_address', ''),
                 status_history=json.dumps(initial_history, default=str)
             )

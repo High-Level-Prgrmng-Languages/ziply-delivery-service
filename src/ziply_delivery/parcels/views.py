@@ -13,6 +13,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Parcel
 from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 import json
 
 
@@ -43,6 +44,14 @@ def parcel_list_create(request):
 
     elif request.method == 'POST':
         try:
+            # Parse and make timezone-aware
+            estimated_delivery_str = request.data.get('estimated_delivery')
+            estimated_delivery = None
+            if estimated_delivery_str:
+                estimated_delivery = parse_datetime(estimated_delivery_str)
+                if estimated_delivery and timezone.is_naive(estimated_delivery):
+                    estimated_delivery = timezone.make_aware(estimated_delivery)
+
             # Create initial status history
             initial_history = [{
                 'status': 'pending',
@@ -57,7 +66,7 @@ def parcel_list_create(request):
                 sender_address=request.data.get('sender_address'),
                 recipient_name=request.data.get('recipient_name'),
                 recipient_address=request.data.get('recipient_address'),
-                estimated_delivery=request.data.get('estimated_delivery'),
+                estimated_delivery=estimated_delivery,
                 current_location_address=request.data.get('current_location_address', ''),
                 status_history=json.dumps(initial_history, default=str)
             )

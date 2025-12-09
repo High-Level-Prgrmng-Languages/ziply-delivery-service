@@ -1,6 +1,7 @@
 {% extends 'page.html' %}
 {% block title %}{{ company_name }} Dashboard - Ziply Delivery{% endblock %}
 {% block content %}
+{% csrf_token %}
 <div class="dashboard-page">
     <div class="container">
         <div class="page-header">
@@ -9,9 +10,72 @@
         </div>
 
         <div class="dashboard-actions">
-            <a href="{% url 'company_parcel_create' company_name=company_name %}" class="action-btn">Create New Parcel</a>
+            <a href="/create/" class="action-btn">Create Shipment</a>
             <a href="/track/" class="action-btn secondary">Track Parcels</a>
         </div>
+
+        <!-- Company Parcels Section -->
+        <div class="company-parcels">
+            <h2>Your Company's Parcels</h2>
+            {% if parcels %}
+                <div class="parcels-grid">
+                    {% for parcel in parcels %}
+                    <div class="parcel-card">
+                        <div class="parcel-header">
+                            <h3>{{ parcel.tracking_number }}</h3>
+                            <span class="status-badge status-{{ parcel.current_status }}">{{ parcel.current_status|title }}</span>
+                        </div>
+                        <div class="parcel-info">
+                            <p><strong>To:</strong> {{ parcel.recipient_name }}</p>
+                            <p><strong>Contents:</strong> {{ parcel.package_contents|default:"Not specified" }}</p>
+                            <p><strong>Weight:</strong> {{ parcel.package_weight|default:"Not specified" }} kg</p>
+                        </div>
+                        <div class="parcel-actions">
+                            <button class="update-btn" onclick="openUpdateModal('{{ parcel.tracking_number }}', '{{ parcel.current_status }}')">
+                                Update Status
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-parcels">No parcels created yet. <a href="/create/">Create your first shipment</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Update Status Modal -->
+<div id="updateModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeUpdateModal()">&times;</span>
+        <h3>Update Parcel Status</h3>
+        <form id="updateForm">
+            <input type="hidden" id="tracking_number" name="tracking_number">
+            
+            <div class="form-group">
+                <label for="status">New Status</label>
+                <select id="status" name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="picked_up">Picked Up</option>
+                    <option value="in_transit">In Transit</option>
+                    <option value="out_for_delivery">Out for Delivery</option>
+                    <option value="delivered">Delivered</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Current Location</label>
+                <input type="text" id="location" name="location" placeholder="Enter current location">
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Notes (Optional)</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Add any additional notes"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Update Status</button>
+        </form>
     </div>
 </div>
 
@@ -59,5 +123,299 @@
     color: var(--foreground-light);
     border: 1px solid var(--blues-blue);
 }
+
+.company-parcels {
+    margin-top: 3rem;
+}
+
+.company-parcels h2 {
+    color: var(--foreground-light);
+    margin-bottom: 2rem;
+}
+
+.parcels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.parcel-card {
+    background: rgba(26, 27, 38, 0.8);
+    border: 1px solid var(--foreground-dark);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.parcel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.parcel-header h3 {
+    color: var(--blues-blue);
+    margin: 0;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-pending { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
+.status-picked_up { background: rgba(0, 123, 255, 0.2); color: #007bff; }
+.status-in_transit { background: rgba(40, 167, 69, 0.2); color: #28a745; }
+.status-out_for_delivery { background: rgba(255, 87, 34, 0.2); color: #ff5722; }
+.status-delivered { background: rgba(76, 175, 80, 0.2); color: #4caf50; }
+
+.parcel-info p {
+    color: var(--foreground-light);
+    margin: 0.5rem 0;
+}
+
+.update-btn {
+    background: var(--blues-blue);
+    color: var(--background-extra-Dark);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.update-btn:hover {
+    background: var(--foreground-light);
+    transform: translateY(-2px);
+}
+
+.no-parcels {
+    text-align: center;
+    color: var(--foreground-light);
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: rgba(41, 46, 66, 0.95);
+    backdrop-filter: blur(20px);
+    margin: 5% auto;
+    padding: 2.5rem;
+    border: 1px solid var(--foreground-dark);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--metalic-shine);
+}
+
+.close {
+    color: var(--foreground-light2);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.close:hover {
+    color: var(--blues-blue);
+    background: rgba(122, 162, 247, 0.1);
+    transform: scale(1.1);
+}
+
+.modal h3 {
+    color: var(--foreground-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--foreground-light2);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(22, 22, 30, 0.8);
+    border: 2px solid var(--foreground-dark);
+    border-radius: 12px;
+    color: var(--foreground-light);
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 4px rgba(122, 162, 247, 0.1);
+    background: rgba(22, 22, 30, 1);
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: var(--foreground-light2);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: var(--background-dark);
+    color: var(--foreground-light);
+    padding: 8px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.submit-btn {
+    background: var(--metalic-shine);
+    color: var(--foreground-light);
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(122, 162, 247, 0.3);
+    filter: brightness(1.1);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
 </style>
+
+<script>
+// Get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function openUpdateModal(trackingNumber, currentStatus) {
+    document.getElementById('tracking_number').value = trackingNumber;
+    document.getElementById('status').value = currentStatus;
+    document.getElementById('updateModal').style.display = 'block';
+}
+
+function closeUpdateModal() {
+    document.getElementById('updateModal').style.display = 'none';
+    document.getElementById('updateForm').reset();
+}
+
+document.getElementById('updateForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const trackingNumber = formData.get('tracking_number');
+    const csrftoken = getCookie('csrftoken');
+    
+    try {
+        const response = await fetch(`/api/parcels/${trackingNumber}/update-status/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                status: formData.get('status'),
+                location: formData.get('location'),
+                notes: formData.get('notes')
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+            alert('Status updated successfully!');
+            location.reload();
+        } else {
+            alert(result.message || 'Error updating status. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Network error. Please try again.');
+    }
+    
+    closeUpdateModal();
+});
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('updateModal');
+    if (event.target == modal) {
+        closeUpdateModal();
+    }
+}
+</script>
 {% endblock %}

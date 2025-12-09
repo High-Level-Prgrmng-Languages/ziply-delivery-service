@@ -6,12 +6,20 @@
     <div class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1>Fast, Reliable Package Delivery</h1>
-                <p>Track your packages in real-time with Ziply Delivery's secure and efficient service</p>
-                <div class="hero-actions">
-                    <a href="/create/" class="btn-professional">Ship Now</a>
-                    <a href="/track/" class="btn-professional secondary">Track Package</a>
-                </div>
+                {% if is_company %}
+                    <h1>Welcome, {{ company_name }}</h1>
+                    <p>Manage your company's shipping operations with Ziply Delivery</p>
+                    <div class="hero-actions">
+                        <a href="/create/" class="btn-professional">Create Shipment</a>
+                        <a href="/track/" class="btn-professional secondary">Track Packages</a>
+                    </div>
+                {% else %}
+                    <h1>Welcome to Ziply Delivery</h1>
+                    <p>Track your packages in real-time with our secure tracking system</p>
+                    <div class="hero-actions">
+                        <a href="/track/" class="btn-professional">Track Package</a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -20,57 +28,47 @@
     <div class="features-section">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose Ziply Delivery?</h2>
-                <p>Experience the difference with our premium delivery services</p>
+                {% if is_company %}
+                    <h2>Company Dashboard</h2>
+                    <p>Manage your shipping operations efficiently</p>
+                {% else %}
+                    <h2>Track Your Packages</h2>
+                    <p>Stay updated with real-time package tracking</p>
+                {% endif %}
             </div>
             
             <div class="features-grid">
-                <!-- Real-time Tracking -->
-                <div class="feature-card">
-                    <div class="feature-icon">T</div>
-                    <h3>Real-time Tracking</h3>
-                    <p>Monitor your package every step of the way with live location updates and delivery notifications.</p>
-                    <a href="/track/" class="feature-link">Track Now</a>
-                </div>
-
-                <!-- Fast Delivery -->
-                <div class="feature-card">
-                    <div class="feature-icon">F</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Express delivery options available with same-day and next-day delivery to major cities.</p>
-                    <a href="/create/" class="feature-link">Ship Fast</a>
-                </div>
-
-                <!-- Secure Handling -->
-                <div class="feature-card">
-                    <div class="feature-icon">S</div>
-                    <h3>Secure & Safe</h3>
-                    <p>Your packages are protected with advanced security measures and insurance coverage.</p>
-                    <a href="/about/" class="feature-link">Learn More</a>
-                </div>
-
-                <!-- 24/7 Support -->
+                {% if is_company %}
+                    <!-- Company Features -->
+                    <div class="feature-card">
+                        <div class="feature-icon">S</div>
+                        <h3>Create Shipments</h3>
+                        <p>Create and manage package shipments for your customers.</p>
+                        <a href="/create/" class="feature-link">Ship Now</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">M</div>
+                        <h3>Manage Packages</h3>
+                        <p>View and manage all your company's active shipments.</p>
+                        <a href="{% url 'company_dashboard' company_name=company_name %}" class="feature-link">View Dashboard</a>
+                    </div>
+                {% else %}
+                    <!-- User Features -->
+                    <div class="feature-card">
+                        <div class="feature-icon">T</div>
+                        <h3>Real-time Tracking</h3>
+                        <p>Monitor your package every step of the way with live updates.</p>
+                        <a href="/track/" class="feature-link">Track Now</a>
+                    </div>
+                {% endif %}
+                
+                <!-- Common Features -->
                 <div class="feature-card">
                     <div class="feature-icon">24</div>
                     <h3>24/7 Support</h3>
-                    <p>Our customer service team is always ready to help you with any questions or concerns.</p>
+                    <p>Our customer service team is always ready to help.</p>
                     <a href="/support/" class="feature-link">Get Help</a>
-                </div>
-
-                <!-- Easy Shipping -->
-                <div class="feature-card">
-                    <div class="feature-icon">E</div>
-                    <h3>Easy Shipping</h3>
-                    <p>Simple online booking process with automatic label generation and pickup scheduling.</p>
-                    <a href="/create/" class="feature-link">Start Shipping</a>
-                </div>
-
-                <!-- Global Network -->
-                <div class="feature-card">
-                    <div class="feature-icon">G</div>
-                    <h3>Global Reach</h3>
-                    <p>Worldwide delivery network connecting businesses and individuals across the globe.</p>
-                    <a href="/about/" class="feature-link">View Coverage</a>
                 </div>
             </div>
         </div>

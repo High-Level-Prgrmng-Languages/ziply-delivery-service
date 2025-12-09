@@ -32,6 +32,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="package_contents">Package Contents</label>
+                    <textarea id="package_contents" name="package_contents" rows="2" placeholder="Describe what's inside the package" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="package_weight">Package Weight (kg)</label>
+                    <input type="number" id="package_weight" name="package_weight" step="0.1" min="0.1" placeholder="0.5" required>
+                </div>
+
+                <div class="form-group">
                     <label for="estimated_delivery">Estimated Delivery</label>
                     <input type="datetime-local" id="estimated_delivery" name="estimated_delivery" required>
                 </div>

@@ -18,12 +18,14 @@
                     <p>Get real-time updates on your shipment</p>
                     <a href="/track/" class="help-btn">Track Now</a>
                 </div>
+                {% if user.is_authenticated and user.groups.exists %}
                 <div class="help-card">
                     <div class="help-icon"></div>
                     <h3>Ship Package</h3>
                     <p>Create a new shipment quickly</p>
                     <a href="/create/" class="help-btn">Ship Now</a>
                 </div>
+                {% endif %}
                 <div class="help-card">
                     <div class="help-icon"></div>
                     <h3>Contact Us</h3>
