@@ -284,5 +284,5 @@ For support and questions:
 ---
 
 **Created**: November 29, 2025  
-**Author**: Jyot Harshadkumar Bhavsar 
-**Version**: 1.0.0
+**Author**: Ziply Dilevery Service  
+**Version**: 1.2.0
