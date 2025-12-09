@@ -130,18 +130,116 @@ See `/database/README.md` for detailed schema documentation.
 ```
 ziply-delivery-service/
 ├── src/
-│   ├── ziply_delivery/       # Main Django project
-│   │   ├── parcels/          # Parcel tracking app
-│   │   ├── pages/            # Pages management app
-│   │   ├── myproject/        # Django project settings
-│   │   └── manage.py         # Django management script
-│   ├── requirements.txt      # Python dependencies
-│   ├── .env.example         # Environment template
-│   └── .env                 # Your local environment (not in git)
-├── README.md
-├── LICENSE
-└── .gitignore
+│   ├── ziply_delivery/           # Main Django project
+│   │   ├── parcels/              # Parcel tracking app
+│   │   │   ├── models.py         # Parcel data models with status tracking
+│   │   │   ├── views.py          # API views for parcel management
+│   │   │   ├── urls.py           # Parcel API URL routing
+│   │   │   └── management/       # Database management commands
+│   │   │       └── commands/
+│   │   │           └── init_database.py  # MongoDB index initialization
+│   │   ├── api/                  # REST API endpoints
+│   │   │   ├── models.py         # API data models
+│   │   │   ├── views.py          # Core API views and health checks
+│   │   │   └── urls.py           # API URL configuration
+│   │   ├── company/              # Company portal app
+│   │   │   ├── models.py         # Company user models
+│   │   │   ├── views.py          # Company dashboard and authentication
+│   │   │   ├── urls.py           # Company portal routing
+│   │   │   └── forms.py          # Company registration forms
+│   │   ├── client/               # Client portal app
+│   │   │   ├── models.py         # Customer models
+│   │   │   ├── views.py          # Client authentication and dashboard
+│   │   │   ├── urls.py           # Client portal routing
+│   │   │   └── forms.py          # Client registration forms
+│   │   ├── pages/                # Content management app
+│   │   │   ├── models.py         # Page content models
+│   │   │   └── views.py          # Static page views
+│   │   ├── templates/            # HTML templates
+│   │   │   ├── company/          # Company portal templates
+│   │   │   │   ├── dashboard.html    # Company dashboard with modal system
+│   │   │   │   ├── login.html        # Company login form
+│   │   │   │   └── register.html     # Company registration
+│   │   │   ├── client/           # Client portal templates
+│   │   │   │   ├── login.html        # Client login form
+│   │   │   │   └── register.html     # Client registration
+│   │   │   ├── page.html         # Base template with modern styling
+│   │   │   ├── home.html         # Landing page with dual portal access
+│   │   │   ├── track_parcel.html # Package tracking interface
+│   │   │   ├── create_parcel.html # Shipment creation form
+│   │   │   ├── about.html        # About page
+│   │   │   ├── support.html      # Support and FAQ
+│   │   │   ├── privacy_policy.html # Privacy policy
+│   │   │   └── terms_of_service.html # Terms of service
+│   │   ├── static/               # Static files
+│   │   │   ├── css/              # Stylesheets
+│   │   │   │   └── styles.css    # Main CSS with modal styling
+│   │   │   ├── js/               # JavaScript files
+│   │   │   └── images/           # Image assets
+│   │   ├── ziply_delivery/       # Django project settings
+│   │   │   ├── settings.py       # Main configuration
+│   │   │   ├── urls.py           # Root URL configuration
+│   │   │   ├── views.py          # Main project views
+│   │   │   └── wsgi.py           # WSGI configuration
+│   │   ├── manage.py             # Django management script
+│   │   ├── .env.example          # Environment template
+│   │   └── .env                  # Local environment (not in git)
+│   └── requirements.txt          # Python dependencies
+├── README.md                     # Project documentation
+├── LICENSE                       # GPL-3.0 license
+└── .gitignore                    # Git ignore rules
 ```
+
+### Key Application Components
+
+#### Company Dashboard Features
+- **Modern Modal System**: Glassmorphism-styled modals for status updates
+- **Real-time Updates**: AJAX-powered status modification without page refresh
+- **Professional UI**: Modern card-based layout with hover effects
+- **Status Management**: Complete parcel lifecycle management
+- **Form Validation**: Client-side and server-side validation
+- **CSRF Security**: Secure form submissions with token validation
+
+#### Authentication System
+- **Dual Portal Design**: Separate interfaces for customers and companies
+- **Session Management**: Secure login/logout with proper redirects
+- **Role-based Access**: Different permissions for users vs companies
+- **Registration System**: Complete signup flow for both user types
+
+#### API Architecture
+- **RESTful Design**: Clean API endpoints following REST principles
+- **Status Updates**: Real-time parcel status modification endpoints
+- **Health Monitoring**: System health and database connectivity checks
+- **Error Handling**: Comprehensive error responses with proper HTTP codes
+
+#### Database Design
+- **MongoDB Integration**: NoSQL database with optimized indexes
+- **Status History**: Embedded document structure for tracking history
+- **Geographic Data**: Location-based queries for delivery optimization
+- **Unique Constraints**: Tracking number uniqueness with proper indexing
+
+### Modern UI Components
+
+#### Styling Architecture
+- **CSS Custom Properties**: Consistent color scheme and spacing
+- **Glassmorphism Effects**: Modern backdrop-blur and transparency
+- **Responsive Design**: Mobile-first approach with CSS Grid/Flexbox
+- **Animation System**: Smooth transitions and hover effects
+- **Professional Typography**: Clean, readable font hierarchy
+
+#### Interactive Elements
+- **Modal System**: Professional overlay modals with backdrop blur
+- **Form Controls**: Styled inputs with focus states and validation
+- **Button Components**: Consistent button styling with hover effects
+- **Status Badges**: Color-coded status indicators
+- **Card Components**: Modern card layout with shadows and borders
+
+#### JavaScript Features
+- **AJAX Integration**: Asynchronous form submissions
+- **DOM Manipulation**: Dynamic content updates
+- **Event Handling**: Proper event delegation and cleanup
+- **Error Handling**: User-friendly error messages and validation
+- **CSRF Token Management**: Automatic token handling for security
 
 ### Running Tests
 ```bash
