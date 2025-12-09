@@ -38,7 +38,7 @@ cd ziply-delivery-service
 ```bash
 python3.14 -m venv myproject-env
 # Alternative: python -m venv myproject-env
-source myproject-env/bin/activate  # On Windows: myproject-env\Scripts\activate
+source myproject-env/bin/activate  
 ```
 
 3. **Install dependencies**
