@@ -3,49 +3,199 @@
 {% block content %}
 <div class="support-page">
     <div class="container">
-        <div class="support-header">
+        <div class="page-header">
             <h1>Support Center</h1>
-            <p>Get help with your deliveries and account</p>
+            <p>We're here to help you with your delivery needs 24/7</p>
         </div>
 
-        <div class="support-grid">
-            <div class="support-card">
-                <h3>Contact Us</h3>
-                <div class="contact-info">
-                    <p><strong>Email:</strong> support@ziplydelivery.com</p>
-                    <p><strong>Phone:</strong> 1-800-ZIPLY-1</p>
-                    <p><strong>Hours:</strong> Mon-Fri 8AM-8PM EST</p>
+        <!-- Quick Help Section -->
+        <div class="quick-help">
+            <h2>Quick Help</h2>
+            <div class="help-cards">
+                <div class="help-card">
+                    <div class="help-icon"></div>
+                    <h3>Track Package</h3>
+                    <p>Get real-time updates on your shipment</p>
+                    <a href="/track/" class="help-btn">Track Now</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon"></div>
+                    <h3>Ship Package</h3>
+                    <p>Create a new shipment quickly</p>
+                    <a href="/create/" class="help-btn">Ship Now</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon"></div>
+                    <h3>Contact Us</h3>
+                    <p>Speak with our support team</p>
+                    <a href="#contact" class="help-btn">Get Help</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-content">
+            <!-- Contact Information -->
+            <div class="support-section" id="contact">
+                <h2>Contact Information</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon"></div>
+                        <h3>Email Support</h3>
+                        <p><strong>support@ziplydelivery.com</strong></p>
+                        <p>Response time: Within 2 hours</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"></div>
+                        <h3>Phone Support</h3>
+                        <p><strong>1-800-ZIPLY-1 (1-800-947-5991)</strong></p>
+                        <p>Available 24/7 for urgent matters</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"></div>
+                        <h3>Live Chat</h3>
+                        <p><strong>Available on website</strong></p>
+                        <p>Monday - Friday, 8 AM - 8 PM EST</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"></div>
+                        <h3>Business Hours</h3>
+                        <p><strong>Monday - Friday: 9 AM - 6 PM EST</strong></p>
+                        <p>Saturday: 10 AM - 4 PM EST</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="support-card tracking-card">
-                <div class="card-icon">
-                    <span class="material-symbols-outlined">search</span>
+            <!-- FAQ Section -->
+            <div class="support-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3>Tracking & Delivery</h3>
+                        <div class="faq-item">
+                            <h4>How do I track my package?</h4>
+                            <p>Use our tracking page with your tracking number (format: TRK123456789) to get real-time updates. You'll receive SMS and email notifications at key delivery milestones.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How long does delivery take?</h4>
+                            <p>Standard delivery takes 3-5 business days. Express delivery is 1-2 days, and overnight delivery arrives the next business day. International shipping varies by destination (5-15 business days).</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What if my package is delayed?</h4>
+                            <p>We'll notify you immediately of any delays. You can also check real-time updates on our tracking page. For urgent matters, contact our support team for priority assistance.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h3>Shipping & Pricing</h3>
+                        <div class="faq-item">
+                            <h4>How much does shipping cost?</h4>
+                            <p>Pricing depends on package size, weight, destination, and delivery speed. Use our shipping calculator for instant quotes. We offer competitive rates with no hidden fees.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What items can I ship?</h4>
+                            <p>We ship most items including documents, electronics, clothing, and household goods. Prohibited items include hazardous materials, perishables, and illegal substances.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Do you offer insurance?</h4>
+                            <p>Yes! We provide free insurance up to $100 value. Additional coverage is available for high-value items at competitive rates.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h3>Account & Technical</h3>
+                        <div class="faq-item">
+                            <h4>Do I need an account to ship?</h4>
+                            <p>No account required for one-time shipments. However, creating an account lets you save addresses, track multiple packages, and access shipping history.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How do I change my delivery address?</h4>
+                            <p>Contact us before your package ships to modify the delivery address. Once in transit, address changes may incur additional fees depending on the new location.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Can I schedule a pickup?</h4>
+                            <p>Yes! Schedule pickups during checkout or contact us to arrange. We offer same-day pickup in major cities and next-day pickup in most areas.</p>
+                        </div>
+                    </div>
                 </div>
-                <h3>Track Your Package</h3>
-                <p>Enter your tracking number to get real-time updates</p>
-                <form class="tracking-form">
-                    <input type="text" placeholder="Enter tracking number" class="tracking-input">
-                    <button type="submit" class="track-btn">Track</button>
+            </div>
+
+            <!-- Help Topics -->
+            <div class="support-section">
+                <h2>Popular Help Topics</h2>
+                <div class="help-topics">
+                    <div class="topic-item">
+                        <h3>Package Not Found</h3>
+                        <p>If tracking shows no results, verify your tracking number format. Contact us if the issue persists - we'll locate your package immediately.</p>
+                    </div>
+                    <div class="topic-item">
+                        <h3>Shipping Labels</h3>
+                        <p>Download and print shipping labels from your confirmation email. Ensure labels are clear and securely attached to avoid delivery delays.</p>
+                    </div>
+                    <div class="topic-item">
+                        <h3>Refunds & Claims</h3>
+                        <p>Lost or damaged packages are covered by our guarantee. File claims within 30 days with photos and documentation for fast resolution.</p>
+                    </div>
+                    <div class="topic-item">
+                        <h3>International Shipping</h3>
+                        <p>We ship to 150+ countries with customs handling included. Check destination restrictions and required documentation before shipping.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Support -->
+            <div class="support-section emergency">
+                <h2>🚨 Emergency Support</h2>
+                <p>For urgent delivery issues, lost packages, or time-sensitive shipments:</p>
+                <div class="emergency-contact">
+                    <div class="emergency-item">
+                        <strong>Emergency Hotline:</strong> 1-800-ZIPLY-911
+                    </div>
+                    <div class="emergency-item">
+                        <strong>Priority Email:</strong> urgent@ziplydelivery.com
+                    </div>
+                    <div class="emergency-item">
+                        <strong>Response Time:</strong> Within 15 minutes, 24/7
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="support-section">
+                <h2>Send Us a Message</h2>
+                <form class="contact-form" id="supportForm" action="mailto:jyotbhavsar2005@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tracking">Tracking Number (Optional)</label>
+                            <input type="text" id="tracking" name="tracking" placeholder="TRK123456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Issue Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="tracking">Tracking Issues</option>
+                                <option value="delivery">Delivery Problems</option>
+                                <option value="shipping">Shipping Questions</option>
+                                <option value="billing">Billing & Payments</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Please describe your issue in detail..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </form>
-            </div>
-
-            <div class="support-card full-width">
-                <h3>Frequently Asked Questions</h3>
-                <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>How do I track my package?</summary>
-                        <p>Use your tracking number in the search bar above or on our homepage to get real-time updates on your delivery.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>What are your delivery hours?</summary>
-                        <p>We deliver Monday through Friday from 8AM to 6PM, and Saturday from 9AM to 3PM in most areas.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>How do I change my delivery address?</summary>
-                        <p>Contact our support team at least 24 hours before delivery to modify your address.</p>
-                    </details>
-                </div>
             </div>
         </div>
     </div>
@@ -53,213 +203,343 @@
 
 <style>
 .support-page {
+    min-height: 80vh;
     padding: 2rem 0;
-    min-height: 70vh;
 }
 
-.support-header {
+.page-header {
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.support-header h1 {
+.page-header h1 {
     color: var(--foreground-light);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--metalic-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.support-header p {
-    color: var(--foreground-light2);
+.page-header p {
+    color: var(--foreground-light);
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
-.support-grid {
+/* Quick Help Section */
+.quick-help {
+    margin-bottom: 4rem;
+}
+
+.quick-help h2 {
+    color: var(--foreground-light);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.help-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 1rem;
 }
 
-.support-card {
-    background: rgba(26, 27, 38, 0.8);
-    border: 1px solid var(--foreground-dark);
-    border-radius: 12px;
+.help-card {
+    background: rgba(26, 27, 38, 0.95);
     padding: 2rem;
-    transition: all 0.3s ease;
-    min-width: 0;
-    overflow: hidden;
+    border-radius: 16px;
+    border: 2px solid var(--blues-blue);
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-.support-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(122, 162, 247, 0.2);
-}
-
-.support-card.full-width {
-    grid-column: 1 / -1;
-}
-
-.support-card h3 {
-    color: var(--foreground-light);
-}
-
-.support-card p {
-    color: var(--foreground-light2);
-}
-
-.contact-info p {
-    color: var(--foreground-light);
-}
-
-.card-icon {
-    background: var(--blues-blue);
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.help-icon {
+    font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.tracking-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.tracking-form {
-    display: flex;
-    gap: 0.75rem;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.tracking-input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--foreground-dark);
-    border-radius: 8px;
-    background: rgba(26, 27, 38, 0.5);
+.help-card h3 {
     color: var(--foreground-light);
-    font-size: 0.95rem;
-    min-width: 0;
+    margin-bottom: 1rem;
 }
 
-.tracking-input::placeholder {
+.help-card p {
     color: var(--foreground-light2);
+    margin-bottom: 1.5rem;
 }
 
-.track-btn {
+.help-btn {
+    display: inline-block;
     background: var(--blues-blue);
-    color: var(--background-extra-Dark);
-    border: none;
+    color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
+    text-decoration: none;
     font-weight: 600;
-    cursor: pointer;
     transition: all 0.3s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
 }
 
-.track-btn:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.1);
+.help-btn:hover {
+    background: var(--foreground-light);
+    transform: translateY(-2px);
 }
 
-/* Responsive for tracking card */
-@media (max-width: 900px) {
-    .tracking-form {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
-    .track-btn {
-        width: 100%;
-    }
+.support-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.support-section {
+    background: rgba(26, 27, 38, 0.8);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--foreground-dark);
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.support-section h2 {
+    color: var(--foreground-light);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contact-item {
+    background: rgba(12, 14, 20, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+    text-align: center;
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item h3 {
+    color: var(--foreground-light);
+    margin-bottom: 1rem;
+}
+
+.contact-item p {
+    color: var(--foreground-light2);
+    margin-bottom: 0.5rem;
+}
+
+/* FAQ Section */
+.faq-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.faq-category {
+    background: rgba(12, 14, 20, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+}
+
+.faq-category h3 {
+    color: var(--blues-blue);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .faq-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--foreground-dark);
-    padding: 1rem 0;
 }
 
 .faq-item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
-.faq-item summary {
+.faq-item h4 {
     color: var(--foreground-light);
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.faq-item summary:hover {
-    color: var(--blues-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
 }
 
 .faq-item p {
-    margin-top: 0.5rem;
-    padding-left: 1rem;
     color: var(--foreground-light2);
+    line-height: 1.6;
 }
 
-/* Responsive breakpoints */
-@media (max-width: 900px) {
-    .support-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .tracking-form {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
-    .btn-primary {
-        width: 100%;
-        padding: 0.75rem 1.5rem;
-    }
+/* Help Topics */
+.help-topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
+.topic-item {
+    background: rgba(12, 14, 20, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+}
+
+.topic-item h3 {
+    color: var(--foreground-light);
+    margin-bottom: 1rem;
+}
+
+.topic-item p {
+    color: var(--foreground-light2);
+    line-height: 1.6;
+}
+
+/* Emergency Support */
+.emergency {
+    border: 2px solid #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.1) !important;
+}
+
+.emergency h2 {
+    color: #ff6b6b !important;
+}
+
+.emergency-contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.emergency-item {
+    background: rgba(255, 107, 107, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    color: var(--foreground-light);
+    text-align: center;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--foreground-light);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--foreground-dark);
+    border-radius: 8px;
+    background: rgba(12, 14, 20, 0.6);
+    color: var(--foreground-light);
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+}
+
+.submit-btn {
+    background: var(--blues-blue);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: var(--foreground-light);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .support-page {
-        padding: 1rem 0;
+    .help-cards {
+        grid-template-columns: 1fr;
     }
     
-    .support-header {
-        margin-bottom: 2rem;
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
     
-    .support-card {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .support-card {
-        padding: 1rem;
+    .form-row {
+        grid-template-columns: 1fr;
     }
     
-    .support-header h1 {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .support-card {
-        padding: 0.75rem;
+    .help-topics {
+        grid-template-columns: 1fr;
     }
     
-    .support-header h1 {
-        font-size: 1.75rem;
-    }
-    
-    .card-icon {
-        width: 2.5rem;
-        height: 2.5rem;
+    .emergency-contact {
+        grid-template-columns: 1fr;
     }
 }
 </style>
+
+<script>
+document.getElementById('supportForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(this);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const tracking = formData.get('tracking');
+    const category = formData.get('category');
+    const message = formData.get('message');
+    
+    // Create email body
+    const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0ATracking Number: ${tracking || 'N/A'}%0D%0ACategory: ${category}%0D%0AMessage: ${message}`;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:jyotbhavsar2005@gmail.com?subject=Support Request - ${category}&body=${emailBody}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    alert('Your email client will open to send the message. Thank you for contacting us!');
+    
+    // Reset form
+    this.reset();
+});
+</script>
 {% endblock %}

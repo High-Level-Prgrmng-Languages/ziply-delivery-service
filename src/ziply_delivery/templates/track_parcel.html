@@ -1,0 +1,280 @@
+{% extends 'page.html' %}
+{% block title %}Track Package - Ziply Delivery{% endblock %}
+{% block content %}
+<div class="track-parcel-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Track Your Package</h1>
+            <p>Enter your tracking number to get real-time updates</p>
+        </div>
+
+        {% if show_success and new_tracking_number %}
+        <div class="success-message" style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; margin: 20px 0; border-radius: 5px;">
+            <h3>✅ Parcel Created Successfully!</h3>
+            <p><strong>Your tracking number is: <span style="font-size: 1.2em; color: #0066cc;">{{ new_tracking_number }}</span></strong></p>
+            <p>Save this number to track your package. It has been automatically entered below.</p>
+        </div>
+        {% endif %}
+
+        <div class="tracking-container">
+            <form class="tracking-form" id="trackingForm">
+                <div class="search-group">
+                    <input type="text" id="tracking_number" placeholder="Enter tracking number (e.g., TRK123456789)" 
+                           value="{% if new_tracking_number %}{{ new_tracking_number }}{% endif %}" required>
+                    <button type="submit" class="track-btn">Track Package</button>
+                </div>
+            </form>
+
+            <div id="tracking-results" class="tracking-results" style="display: none;">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.track-parcel-page {
+    min-height: 80vh;
+    padding: 2rem 0;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    color: var(--foreground-light);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--foreground-light2);
+    font-size: 1.1rem;
+}
+
+.tracking-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tracking-form {
+    background: rgba(26, 27, 38, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+    margin-bottom: 2rem;
+}
+
+.search-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.search-group input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--foreground-dark);
+    border-radius: 8px;
+    background: var(--background-extra-Dark);
+    color: var(--foreground-light);
+    font-size: 1rem;
+}
+
+.search-group input:focus {
+    outline: none;
+    border-color: var(--blues-blue);
+    box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+}
+
+.track-btn {
+    padding: 12px 24px;
+    background: var(--blues-blue);
+    color: var(--background-extra-Dark);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.track-btn:hover {
+    background: var(--foreground-light);
+    transform: translateY(-2px);
+}
+
+.tracking-results {
+    background: rgba(26, 27, 38, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--foreground-dark);
+}
+
+.parcel-info {
+    margin-bottom: 2rem;
+}
+
+.parcel-info h3 {
+    color: var(--foreground-light);
+    margin-bottom: 1rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.info-item {
+    background: var(--background-extra-Dark);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--foreground-dark);
+}
+
+.info-item label {
+    color: var(--foreground-light2);
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.info-item span {
+    color: var(--foreground-light);
+    font-weight: 500;
+}
+
+.status-history {
+    margin-top: 2rem;
+}
+
+.status-history h4 {
+    color: var(--foreground-light);
+    margin-bottom: 1rem;
+}
+
+.status-item {
+    background: var(--background-extra-Dark);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--foreground-dark);
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .search-group {
+        flex-direction: column;
+    }
+    
+    .search-group input {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// Auto-track if there's a new tracking number
+document.addEventListener('DOMContentLoaded', function() {
+    const trackingInput = document.getElementById('tracking_number');
+    if (trackingInput.value) {
+        // Auto-submit the form to show tracking results
+        document.getElementById('trackingForm').dispatchEvent(new Event('submit'));
+    }
+});
+
+document.getElementById('trackingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const trackingNumber = document.getElementById('tracking_number').value;
+    const resultsDiv = document.getElementById('tracking-results');
+    
+    if (!trackingNumber) {
+        displayError('Please enter a tracking number.');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/parcels/${trackingNumber}/`);
+        
+        if (response.ok) {
+            const parcel = await response.json();
+            displayTrackingResults(parcel);
+        } else {
+            displayError('Parcel not found. Please check your tracking number.');
+        }
+    } catch (error) {
+        displayError('Error fetching tracking information. Please try again.');
+    }
+});
+
+function displayTrackingResults(parcel) {
+    const resultsDiv = document.getElementById('tracking-results');
+    
+    resultsDiv.innerHTML = `
+        <div class="parcel-info">
+            <h3>📦 Package Found!</h3>
+            <div class="tracking-number-display" style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                <strong style="font-size: 1.2em;">Tracking Number: <span style="color: #0066cc;">${parcel.tracking_number}</span></strong>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Current Status:</label>
+                    <span class="status-${parcel.current_status}" style="font-weight: bold; text-transform: uppercase;">${parcel.current_status}</span>
+                </div>
+                <div class="info-item">
+                    <label>Sender:</label>
+                    <span>${parcel.sender_name}</span>
+                </div>
+                <div class="info-item">
+                    <label>Recipient:</label>
+                    <span>${parcel.recipient_name}</span>
+                </div>
+                <div class="info-item">
+                    <label>Current Location:</label>
+                    <span>${parcel.current_location_address || 'Not specified'}</span>
+                </div>
+                <div class="info-item">
+                    <label>Estimated Delivery:</label>
+                    <span>${parcel.estimated_delivery ? new Date(parcel.estimated_delivery).toLocaleDateString() : 'Not specified'}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-history">
+            <h4>📋 Tracking History</h4>
+            <div class="timeline">
+                ${parcel.status_history.map(entry => `
+                    <div class="timeline-item" style="border-left: 3px solid #0066cc; padding-left: 15px; margin-bottom: 15px;">
+                        <div class="timeline-date" style="font-weight: bold; color: #666;">${new Date(entry.timestamp).toLocaleString()}</div>
+                        <div class="timeline-status" style="font-weight: bold; text-transform: uppercase; color: #0066cc;">${entry.status}</div>
+                        <div class="timeline-location" style="color: #666;">${entry.location || 'Location not specified'}</div>
+                        <div class="timeline-notes" style="font-style: italic;">${entry.notes || ''}</div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    resultsDiv.style.display = 'block';
+}
+
+function displayError(message) {
+    const resultsDiv = document.getElementById('tracking-results');
+    resultsDiv.innerHTML = `
+        <div class="error-message" style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; border-radius: 5px;">
+            <h4>❌ Error</h4>
+            <p>${message}</p>
+        </div>
+    `;
+    resultsDiv.style.display = 'block';
+}
+</script>
+{% endblock %}

@@ -114,6 +114,7 @@
     width: 80%;
 }
 
+/* Remove special styling for action buttons - they'll use default nav-link styles */
 /* Search Container */
 #header-search-container {
     min-width: 300px;
@@ -244,8 +245,14 @@
             <!-- Desktop Navigation -->
             <nav class="header-desktop-nav">
                 <a href="/" class="nav-link">Home</a>
-                <a href="/login" class="nav-link">Login</a>
-                <a href="/support" class="nav-link">Support</a>
+                {% if user.is_authenticated %}
+                    <a href="/create/" class="nav-link">Shipping</a>
+                    <a href="/track/" class="nav-link">Track Package</a>
+                    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                {% endif %}
+                <a href="/support/" class="nav-link">Support</a>
             </nav>
         </div>
 
@@ -260,7 +267,13 @@
     <!-- Mobile Navigation -->
     <div id="mobile-menu" class="mobile-menu">
         <a href="/" class="nav-link">Home</a>
-        <a href="/login" class="nav-link">Login</a>
+        {% if user.is_authenticated %}
+            <a href="/create" class="nav-link">Create Parcel</a>
+            <a href="/track" class="nav-link">Track Package</a>
+            <a href="/logout" class="nav-link">Logout</a>
+        {% else %}
+            <a href="/login" class="nav-link">Login</a>
+        {% endif %}
         <a href="/support" class="nav-link">Support</a>
         <div id="mobile-search-container"></div>
     </div>
