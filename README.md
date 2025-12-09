@@ -1,5 +1,5 @@
 
-# Ziply Dilevery - Parcel Tracking System
+# Ziply Delivery - Parcel Tracking System
 
 A Django-based REST API for parcel tracking using MongoDB as the database backend. Built for efficient package management and real-time tracking capabilities.
 
