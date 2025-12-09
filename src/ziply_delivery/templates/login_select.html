@@ -1,0 +1,92 @@
+{% extends 'page.html' %}
+{% block title %}Login - Ziply Delivery{% endblock %}
+{% block content %}
+<div class="login-select-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Choose Login Type</h1>
+            <p>Select how you want to access Ziply Delivery</p>
+        </div>
+
+        <div class="login-options">
+            <div class="login-option">
+                <div class="option-card">
+                    <div class="option-icon">👤</div>
+                    <h3>User Login</h3>
+                    <p>Track your packages and view delivery status</p>
+                    <a href="{% url 'user_login' %}" class="btn-professional">Login as User</a>
+                </div>
+            </div>
+
+            <div class="login-option">
+                <div class="option-card">
+                    <div class="option-icon">🏢</div>
+                    <h3>Company Login</h3>
+                    <p>Create shipments and manage your business deliveries</p>
+                    <a href="{% url 'company_login' %}" class="btn-professional">Login as Company</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.login-select-page {
+    min-height: 80vh;
+    padding: 4rem 0;
+    background: rgba(12, 14, 20, 0.3);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.page-header h1 {
+    color: var(--foreground-light);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.login-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.option-card {
+    background: rgba(26, 27, 38, 0.95);
+    border: 1px solid var(--blues-blue);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(122, 162, 247, 0.2);
+}
+
+.option-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-card h3 {
+    color: var(--foreground-light);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.option-card p {
+    color: var(--foreground-light);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+</style>
+
+{% endblock %}

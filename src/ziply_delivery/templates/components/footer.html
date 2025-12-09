@@ -112,16 +112,18 @@
       <!-- Services Column -->
       <div>
         <h5>Services</h5>
-        <a href="/company/packages" class="footer-link">Tracking</a>
-        <a href="/client/packages" class="footer-link">Shipping</a>
+        <a href="/track/" class="footer-link">Tracking</a>
+        {% if user.is_authenticated and user.groups.exists %}
+            <a href="/create/" class="footer-link">Shipping</a>
+        {% endif %}
       </div>
     </div>
 
     <div class="footer-bottom">
       <p>&copy; 2025 Ziply Delivery. All rights reserved.</p>
       <div>
-        <a href="#" class="footer-link">Privacy Policy</a>
-        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="/privacy-policy/" class="footer-link">Privacy Policy</a>
+        <a href="/terms-of-service/" class="footer-link">Terms of Service</a>
       </div>
     </div>
   </div>

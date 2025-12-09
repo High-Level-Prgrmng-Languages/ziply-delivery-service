@@ -1,58 +1,94 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as Login
-from .models import Customer
+from django.contrib.auth.models import User, Group
+from django.contrib.auth import authenticate, login as Login, logout as Logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
-
-def login(request):
+def login_select(request):
     """
-    Login page rendering
+    Login type selection page
+    """
+    return render(request, 'login_select.html')
+
+def user_login(request):
+    """
+    User login page - for customers who can only track
     """
     if request.method == 'POST':
         username = request.POST.get('username')
-        print(username)
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
+        
         if user is not None:
-            Login(request, user)
-            return redirect('home')
+            # Check if user is NOT part of any company group
+            if not user.groups.exists():
+                Login(request, user)
+                return redirect('home')
+            else:
+                return render(request, 'user_login.html', {
+                    'error': 'This account is registered as a company. Please use company login.'
+                })
         else:
-            return render(request, 'login.html', {'error': 'Password or username invalid'})
-    else:
-        return render(request, 'login.html')
+            return render(request, 'user_login.html', {
+                'error': 'Invalid username or password'
+            })
+    
+    return render(request, 'user_login.html')
 
+def company_login(request):
+    """
+    Company login page - for companies who can create shipments
+    """
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            # Check if user is part of a company group
+            if user.groups.exists():
+                Login(request, user)
+                return redirect('home')
+            else:
+                return render(request, 'company_login.html', {
+                    'error': 'This account is not registered as a company. Please use user login.'
+                })
+        else:
+            return render(request, 'company_login.html', {
+                'error': 'Invalid username or password'
+            })
+    
+    return render(request, 'company_login.html')
+
+# Keep existing login function as fallback
+def login(request):
+    """
+    Redirect to login selection
+    """
+    return redirect('login_select')
+
+@login_required
+def logout(request):
+    """
+    Logout user and redirect to home
+    """
+    Logout(request)
+    return redirect('home')
 
 def register(request):
     """
-    Creates a new customer and user
+    Register page rendering
     """
     if request.method == 'POST':
         username = request.POST.get('username')
-        email = request.POST.get('email')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        telephone = request.POST.get('phone')
         password = request.POST.get('password')
-        confirm_password = request.POST.get('confirm_password')
-
-        # ---------------------- CHECKS
-        if password != confirm_password:
-            return render(request, 'register.html', {'error': 'Passwords do not match'})
-
-        if not email or not password:
-            return render(request, 'register.html', {'error': 'Email and password required'})
-
-        user_exists = User.objects.filter(username=username)
-        if (user_exists):
-            return render(request, 'register.html', {'error': 'User already exists'})
-
-        # ---------------------- CREATION
-        user = User.objects.create_user(username=username,
-                                        email=email, first_name=first_name, last_name=last_name, password=password)
-        new_customer = Customer(first_name=first_name, last_name=last_name,
-                                telephone=telephone, account=user.id(), email=email)
-        new_customer.save()
+        email = request.POST.get('email', '')
+        
+        if User.objects.filter(username=username).exists():
+            return render(request, 'register.html', {'error': 'Username already exists'})
+        
+        user = User.objects.create_user(username=username, password=password, email=email)
         Login(request, user)
         return redirect('home')
-    else:
-        return render(request, 'register.html')
+    
+    return render(request, 'register.html')

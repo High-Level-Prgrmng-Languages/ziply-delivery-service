@@ -1,0 +1,78 @@
+{% extends 'page.html' %}
+{% block title %}Create Parcel - {{ company_name }} - Ziply Delivery{% endblock %}
+{% block content %}
+<div class="create-parcel-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Create New Parcel</h1>
+            <p>{{ company_name }} - Fill in the details to create a new parcel for delivery</p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="form-container">
+            <form method="post" class="parcel-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="sender_name">Sender Name</label>
+                    <input type="text" id="sender_name" name="sender_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="sender_address">Sender Address</label>
+                    <textarea id="sender_address" name="sender_address" rows="3" placeholder="Enter full sender address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient_name">Recipient Name</label>
+                    <input type="text" id="recipient_name" name="recipient_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient_address">Recipient Address</label>
+                    <textarea id="recipient_address" name="recipient_address" rows="3" placeholder="Enter full delivery address" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="estimated_delivery">Estimated Delivery</label>
+                    <input type="datetime-local" id="estimated_delivery" name="estimated_delivery" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="current_location_address">Current Location</label>
+                    <input type="text" id="current_location_address" name="current_location_address" placeholder="Warehouse A">
+                </div>
+
+                <button type="submit" class="submit-btn">Create Parcel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.alert {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.alert-success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid #22c55e;
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+/* Rest of styles same as main create_parcel.html */
+</style>
+{% endblock %}
